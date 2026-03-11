@@ -3,24 +3,146 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Personal Website</title>
+    <title>Steady Progress | Health Coaching</title>
+    <meta name="description" content="Health coaching services prioritizing steady progress and longevity.">
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>Welcome to My Website</h1>
-            <p>I'm currently building this site. Check back soon for updates!</p>
-        </header>
-        <main>
-            <section class="card">
-                <h2>About Me</h2>
-                <p>This is a simple website hosted on GitHub Pages.</p>
-            </section>
-        </main>
-        <footer>
-            <p>&copy; 2026 My Website</p>
-        </footer>
-    </div>
+    <header class="site-header">
+        <div class="container header-container">
+            <div class="logo">
+                <img src="assets/turtle_logo.png" alt="Line drawing of a sea turtle, logo for TV Repairs Health Coaching" class="logo-img">
+                <span class="logo-text">TV Repairs Coaching</span>
+            </div>
+            <nav aria-label="Main Navigation">
+                <ul class="nav-links">
+                    <li><a href="about.html">About Tom</a></li>
+                    <li><a href="index.html#services">Services</a></li>
+                    <li><a href="index.html#updates">Updates</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                    <li><a href="index.html#newsletter">Newsletter</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero" aria-labelledby="hero-title">
+            <div class="hero-overlay"></div>
+            <div class="container hero-content">
+                <h1 id="hero-title">Tune Into Your Clear Channel.</h1>
+                <p>Welcome to <strong>TV Repairs</strong>. I'm Tom Vance. I help you remove the static from your life, find your frequency, and build steady, lifelong health habits.</p>
+                <a href="#services" class="btn btn-primary" aria-label="Explore my health coaching services">Explore Services</a>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section id="services" class="section bg-light" aria-labelledby="services-title">
+            <div class="container">
+                <h2 id="services-title" class="section-title">My Services</h2>
+                <div class="grid cards">
+                    <article class="card">
+                        <div class="card-icon" aria-hidden="true">📻</div>
+                        <h3>Tuning In</h3>
+                        <p>Learn to listen to your body's signals and find your "clear channel." We work together to remove static, reduce stress, and clarify your health goals.</p>
+                    </article>
+                    <article class="card">
+                        <div class="card-icon" aria-hidden="true">📺</div>
+                        <h3>"TV Repairs" Coaching</h3>
+                        <p>1-on-1 coaching directly with Tom Vance to troubleshoot lifestyle roadblocks, fine-tune your daily routines, and restore your natural energy.</p>
+                    </article>
+                    <article class="card">
+                        <div class="card-icon" aria-hidden="true">🐢</div>
+                        <h3>Steady Habit Building</h3>
+                        <p>Slow and steady wins the race. We focus on micro-habits that compound over time for incredible, lasting health transformations, without the quick-fix burnout.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Updates & Photos Section -->
+        <section id="updates" class="section" aria-labelledby="updates-title">
+            <div class="container">
+                <h2 id="updates-title" class="section-title">Latest Updates & Photos</h2>
+                <p class="section-subtitle">Follow along with my journey, tips, and community highlights.</p>
+                <div class="grid update-grid">
+                    <!-- Placeholder Update 1 -->
+                    <div class="update-card">
+                        <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=600&auto=format&fit=crop" alt="Person doing yoga outdoors" class="update-img" loading="lazy">
+                        <div class="update-info">
+                            <h3>Morning Mobility Routine</h3>
+                            <p>Taking just 10 minutes every morning to stretch can drastically improve your day. Here's a quick look at my routine.</p>
+                        </div>
+                    </div>
+                    <!-- Placeholder Update 2 -->
+                    <div class="update-card">
+                        <img src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?q=80&w=600&auto=format&fit=crop" alt="Healthy meal with greens and grains" class="update-img" loading="lazy">
+                        <div class="update-info">
+                            <h3>Fueling the Real Way</h3>
+                            <p>A peek at what a balanced, nutrient-dense lunch looks like when you're focusing on longevity over quick fixes.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="section bg-light" aria-labelledby="contact-title">
+            <div class="container contact-container">
+                <div class="contact-text">
+                    <h2 id="contact-title" class="section-title" style="text-align: left;">Let's Talk.</h2>
+                    <p>Ready to tune into your clear channel? Send me a message, and we'll chat about how my coaching can help you build steady, lasting health habits.</p>
+                </div>
+                <!-- Note: This form requires a free service like Formspree (formspree.io) to actually send email from a static site. 
+                     Replace "YOUR_FORMSPREE_ENDPOINT" with your actual endpoint URL. -->
+                <form action="https://formspree.io/f/mdawergl" method="POST" class="contact-form">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" required placeholder="Your name">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required placeholder="Your email address">
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" rows="5" required placeholder="How can I help you?"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Send Message</button>
+                </form>
+            </div>
+        </section>
+
+        <!-- Substack Newsletter Section -->
+        <section id="newsletter" class="section bg-secondary text-white" aria-labelledby="newsletter-title">
+            <div class="container text-center">
+                <h2 id="newsletter-title" class="section-title">Join the Newsletter</h2>
+                <p>Read my deep dives into health, mindset, and slow-living on Substack.</p>
+                
+                <div class="substack-embed">
+                    <!-- Replace 'yourname' with your actual Substack username in the URL below -->
+                    <iframe src="https://tvrepairs.substack.com/embed" width="100%" height="320" style="border:1px solid #EEE; background:white; border-radius: 8px;" frameborder="0" scrolling="no" title="Substack Subscribe form"></iframe>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-content">
+            <div class="footer-brand">
+                <img src="assets/turtle_logo.png" alt="Footer Logo" class="footer-logo">
+                <p>TV Repairs Health Coaching</p>
+            </div>
+            <p>&copy; <span id="year">2026</span> Tom Vance. Beautifully accessible.</p>
+        </div>
+    </footer>
+    
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
 </body>
 </html>
