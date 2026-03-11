@@ -64,28 +64,13 @@
             </div>
         </section>
 
-        <!-- Updates & Photos Section -->
+        <!-- Substack Posts Section -->
         <section id="updates" class="section" aria-labelledby="updates-title">
             <div class="container">
-                <h2 id="updates-title" class="section-title">Latest Updates & Photos</h2>
-                <p class="section-subtitle">Follow along with my journey, tips, and community highlights.</p>
-                <div class="grid update-grid">
-                    <!-- Placeholder Update 1 -->
-                    <div class="update-card">
-                        <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=600&auto=format&fit=crop" alt="Person doing yoga outdoors" class="update-img" loading="lazy">
-                        <div class="update-info">
-                            <h3>Morning Mobility Routine</h3>
-                            <p>Taking just 10 minutes every morning to stretch can drastically improve your day. Here's a quick look at my routine.</p>
-                        </div>
-                    </div>
-                    <!-- Placeholder Update 2 -->
-                    <div class="update-card">
-                        <img src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?q=80&w=600&auto=format&fit=crop" alt="Healthy meal with greens and grains" class="update-img" loading="lazy">
-                        <div class="update-info">
-                            <h3>Fueling the Real Way</h3>
-                            <p>A peek at what a balanced, nutrient-dense lunch looks like when you're focusing on longevity over quick fixes.</p>
-                        </div>
-                    </div>
+                <h2 id="updates-title" class="section-title">From the Substack</h2>
+                <p class="section-subtitle">Read my latest thoughts on finding your clear channel.</p>
+                <div class="grid update-grid" id="substack-feed">
+                    <p style="text-align: center; width: 100%; color: #888;">Loading latest posts...</p>
                 </div>
             </div>
         </section>
@@ -143,6 +128,59 @@
     
     <script>
         document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Fetch latest Substack posts via RSS2JSON so it automatically updates
+        fetch('https://api.rss2json.com/v1/api.json?rss_url=https://tvrepairs.substack.com/feed')
+            .then(response => response.json())
+            .then(data => {
+                const feedContainer = document.getElementById('substack-feed');
+                feedContainer.innerHTML = ''; // Clear loading text
+
+                if (data.status === 'ok' && data.items.length > 0) {
+                    // Get the 2 most recent posts (you can change the 2 to 3 or 4 if you want!)
+                    const latestPosts = data.items.slice(0, 2);
+                    
+                    latestPosts.forEach(post => {
+                        // Create card element that links to the post
+                        const card = document.createElement('a');
+                        card.href = post.link;
+                        card.target = "_blank";
+                        card.className = "update-card";
+                        card.style.display = "block"; // Make the whole card clickable
+                        card.style.textDecoration = "none";
+                        card.style.color = "inherit";
+
+                        // Substack usually embeds the main image in the enclosure
+                        let imgUrl = "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=600&auto=format&fit=crop"; 
+                        if (post.enclosure && post.enclosure.link) {
+                            imgUrl = post.enclosure.link;
+                        } else {
+                            // Try to extract image from content if enclosure fails
+                            const parser = new DOMParser();
+                            const doc = parser.parseFromString(post.description, 'text/html');
+                            const firstImg = doc.querySelector('img');
+                            if (firstImg) imgUrl = firstImg.src;
+                        }
+
+                        // Parse the date
+                        const pubDate = new Date(post.pubDate).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+
+                        card.innerHTML = `
+                            <img src="${imgUrl}" alt="Thumbnail for ${post.title}" class="update-img" loading="lazy">
+                            <div class="update-info">
+                                <p style="font-size: 0.85rem; color: #777; margin-bottom: 0.5rem; text-transform: uppercase; font-weight: 600;">${pubDate}</p>
+                                <h3>${post.title}</h3>
+                            </div>
+                        `;
+                        feedContainer.appendChild(card);
+                    });
+                } else {
+                    feedContainer.innerHTML = '<p style="text-align: center; width: 100%;">Check out my <a href="https://tvrepairs.substack.com" target="_blank">Substack</a> for the latest updates!</p>';
+                }
+            })
+            .catch(error => {
+                document.getElementById('substack-feed').innerHTML = '<p style="text-align: center; width: 100%;">Check out my <a href="https://tvrepairs.substack.com" target="_blank">Substack</a> for the latest updates!</p>';
+            });
     </script>
 </body>
 </html>
