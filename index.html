@@ -144,47 +144,39 @@
     <script>
         document.getElementById('year').textContent = new Date().getFullYear();
 
-        // Fetch latest Substack posts via RSS2JSON so it automatically updates
-        fetch('https://api.rss2json.com/v1/api.json?rss_url=https://tvrepairs.substack.com/feed')
+        // Fetch latest Substack posts directly from Substack's JSON archive 
+        fetch('https://tvrepairs.substack.com/api/v1/archive?sort=new&limit=2')
             .then(response => response.json())
             .then(data => {
                 const feedContainer = document.getElementById('substack-feed');
                 feedContainer.innerHTML = ''; // Clear loading text
 
-                if (data.status === 'ok' && data.items.length > 0) {
-                    // Get the 2 most recent posts (you can change the 2 to 3 or 4 if you want!)
-                    const latestPosts = data.items.slice(0, 2);
-                    
-                    latestPosts.forEach(post => {
+                if (data && data.length > 0) {
+                    data.forEach(post => {
                         // Create card element that links to the post
                         const card = document.createElement('a');
-                        card.href = post.link;
+                        card.href = post.canonical_url;
                         card.target = "_blank";
                         card.className = "update-card";
-                        card.style.display = "block"; // Make the whole card clickable
+                        card.style.display = "block"; 
                         card.style.textDecoration = "none";
                         card.style.color = "inherit";
 
-                        // Substack usually embeds the main image in the enclosure
+                        // Substack JSON API sometimes provides cover images
                         let imgUrl = "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=600&auto=format&fit=crop"; 
-                        if (post.enclosure && post.enclosure.link) {
-                            imgUrl = post.enclosure.link;
-                        } else {
-                            // Try to extract image from content if enclosure fails
-                            const parser = new DOMParser();
-                            const doc = parser.parseFromString(post.description, 'text/html');
-                            const firstImg = doc.querySelector('img');
-                            if (firstImg) imgUrl = firstImg.src;
+                        if (post.cover_image) {
+                            imgUrl = post.cover_image;
                         }
 
                         // Parse the date
-                        const pubDate = new Date(post.pubDate).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+                        const pubDate = new Date(post.post_date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
 
                         card.innerHTML = `
                             <img src="${imgUrl}" alt="Thumbnail for ${post.title}" class="update-img" loading="lazy">
                             <div class="update-info">
                                 <p style="font-size: 0.85rem; color: #777; margin-bottom: 0.5rem; text-transform: uppercase; font-weight: 600;">${pubDate}</p>
                                 <h3>${post.title}</h3>
+                                ${post.subtitle ? `<p style="font-size: 0.9rem; color: #555; margin-top: 0.5rem;">${post.subtitle}</p>` : ''}
                             </div>
                         `;
                         feedContainer.appendChild(card);
