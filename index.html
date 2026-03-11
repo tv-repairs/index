@@ -148,7 +148,8 @@
         document.getElementById('year').textContent = new Date().getFullYear();
 
         // Fetch latest Substack posts directly from Substack's JSON archive 
-        fetch('https://tvrepairs.substack.com/api/v1/archive?sort=new&limit=2')
+        // We use a CORS proxy to prevent browser security from blocking the request
+        fetch('https://api.allorigins.win/raw?url=' + encodeURIComponent('https://tvrepairs.substack.com/api/v1/archive?sort=new&limit=2'))
             .then(response => response.json())
             .then(data => {
                 const feedContainer = document.getElementById('substack-feed');
