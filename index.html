@@ -21,10 +21,25 @@
                 <img src="assets/new_turtle_logo.png" alt="Line drawing of a sea turtle, logo for TV Repairs Health Coaching" class="logo-img">
                 <span class="logo-text">TV Repairs Coaching</span>
             </div>
-            <nav aria-label="Main Navigation">
-                <ul class="nav-links">
-                    <li><a href="#contact" class="btn btn-primary" style="padding: 0.5rem 1.5rem; font-size: 0.9rem;">Let's Talk</a></li>
-                </ul>
+            <nav aria-label="Main Navigation" class="main-nav">
+                <div class="nav-actions">
+                    <button class="menu-toggle" id="menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="dropdown-menu">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--color-green-dark)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="3" y1="12" x2="21" y2="12"></line>
+                            <line x1="3" y1="6" x2="21" y2="6"></line>
+                            <line x1="3" y1="18" x2="21" y2="18"></line>
+                        </svg>
+                    </button>
+                    <a href="#contact" class="btn btn-primary nav-cta">Let's Talk</a>
+                </div>
+                <!-- Dropdown Menu -->
+                <div id="dropdown-menu" class="dropdown-menu">
+                    <ul class="dropdown-links">
+                        <li><a href="#who-i-work-with">Who I Work With</a></li>
+                        <li><a href="#services">My Services</a></li>
+                        <li><a href="#process">How It Works</a></li>
+                    </ul>
+                </div>
             </nav>
         </div>
     </header>
@@ -250,6 +265,36 @@
             .catch(error => {
                 document.getElementById('substack-feed').innerHTML = '<p style="text-align: center; width: 100%;">Check out my <a href="https://tvrepairs.substack.com" target="_blank">Substack</a> for the latest updates!</p>';
             });
+        // Close menu if clicking outside
+        document.addEventListener('click', function(event) {
+            const nav = document.querySelector('.main-nav');
+            const menuToggle = document.getElementById('menu-toggle');
+            const dropdownMenu = document.getElementById('dropdown-menu');
+            
+            if (!nav.contains(event.target) && dropdownMenu.classList.contains('show')) {
+                dropdownMenu.classList.remove('show');
+                menuToggle.setAttribute('aria-expanded', 'false');
+            }
+        });
+        
+        // Handle menu toggle button
+        document.getElementById('menu-toggle').addEventListener('click', function() {
+            const menu = document.getElementById('dropdown-menu');
+            const isExpanded = this.getAttribute('aria-expanded') === 'true';
+            
+            this.setAttribute('aria-expanded', !isExpanded);
+            menu.classList.toggle('show');
+        });
+        
+        // Close menu when a link inside it is clicked
+        const dropdownLinks = document.querySelectorAll('.dropdown-links a');
+        dropdownLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('dropdown-menu').classList.remove('show');
+                document.getElementById('menu-toggle').setAttribute('aria-expanded', 'false');
+            });
+        });
+
     </script>
 </body>
 </html>
