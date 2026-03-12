@@ -47,7 +47,7 @@
     <main>
         <!-- Hero Section -->
         <section class="hero" aria-labelledby="hero-title">
-            <video autoplay="autoplay" loop="loop" muted="muted" playsinline="playsinline" class="hero-video">
+            <video autoplay="autoplay" loop="loop" muted="muted" playsinline="playsinline" webkit-playsinline="true" id="bg-video" class="hero-video">
                 <source src="assets/turtlevideo.mp4" type="video/mp4">
                 <!-- Fallback for browsers that don't support the video -->
             </video>
@@ -304,6 +304,25 @@
                 document.getElementById('dropdown-menu').classList.remove('show');
                 document.getElementById('menu-toggle').setAttribute('aria-expanded', 'false');
             });
+        });
+
+        // Force video play for strict mobile browsers
+        document.addEventListener('DOMContentLoaded', () => {
+            const video = document.getElementById('bg-video');
+            if (video) {
+                video.muted = true; // Ensure muted is set before play
+                const playPromise = video.play();
+                if (playPromise !== undefined) {
+                    playPromise.catch(error => {
+                        console.log("Autoplay was prevented by browser strict settings:", error);
+                        // Add a subtle click-to-play interaction anywhere on the document as a fallback
+                        document.body.addEventListener('touchstart', function playOnTouch() {
+                            video.play();
+                            document.body.removeEventListener('touchstart', playOnTouch);
+                        }, { once: true });
+                    });
+                }
+            }
         });
 
     </script>
