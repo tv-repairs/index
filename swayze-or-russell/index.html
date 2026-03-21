@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Swayze or Russell?</title>
+    <style>
+        body {
+            font-family: 'Inter', system-ui, sans-serif;
+            background-color: #1a1a1b;
+            color: #ececec;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            text-align: center;
+        }
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            background: linear-gradient(90deg, #ff8a00, #e52e71);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        #game-container {
+            background: #2a2a2b;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+            max-width: 500px;
+            width: 90%;
+            border: 1px solid #3a3a3b;
+        }
+        #image-container {
+            width: 100%;
+            height: 350px;
+            background-color: #1f1f1f;
+            border-radius: 12px;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            border: 2px dashed #444;
+        }
+        #person-image {
+            max-width: 100%;
+            max-height: 100%;
+            display: none;
+            border-radius: 10px;
+            object-fit: contain;
+        }
+        #loading-text {
+            color: #888;
+            font-size: 1.1rem;
+        }
+        .btn-container {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+        }
+        button {
+            border: none;
+            padding: 16px 20px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            flex: 1;
+            color: white;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        }
+        button:active {
+            transform: translateY(1px);
+        }
+        #btn-swayze {
+            background: linear-gradient(135deg, #FF416C, #FF4B2B);
+        }
+        #btn-kurt {
+            background: linear-gradient(135deg, #4776E6, #8E54E9);
+        }
+        #feedback {
+            margin-top: 25px;
+            font-size: 1.3rem;
+            font-weight: bold;
+            height: 30px;
+            transition: color 0.3s;
+        }
+        .correct { color: #4CAF50; }
+        .wrong { color: #F44336; }
+        #score-board {
+            margin-top: 20px;
+            font-size: 1.1rem;
+            color: #bbb;
+            background: #222;
+            padding: 10px 20px;
+            border-radius: 20px;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="game-container">
+        <h1>Swayze or Russell?</h1>
+        <div id="image-container">
+            <span id="loading-text">Loading image...</span>
+            <img id="person-image" src="" alt="Who is this?">
+        </div>
+        
+        <div class="btn-container">
+            <button id="btn-swayze" onclick="makeGuess('Swayze')">Patrick Swayze</button>
+            <button id="btn-kurt" onclick="makeGuess('Russell')">Kurt Russell</button>
+        </div>
+        
+        <div id="feedback"></div>
+        <div id="score-board">Score: <span id="score-val">0</span> / <span id="total-val">0</span></div>
+    </div>
+
+    <script>
+        // Here you can add or replace these URLs with your own image links!
+        const imageDatabase = [
+            { url: 'https://upload.wikimedia.org/wikipedia/commons/0/03/KurtRussellSept2013TIFF.jpg', person: 'Russell' },
+            { url: 'https://upload.wikimedia.org/wikipedia/commons/a/ad/Kurt_Russell_1974.JPG', person: 'Russell' },
+            { url: 'https://upload.wikimedia.org/wikipedia/commons/1/1e/Kurt_Russell_Robert_Vaughn_Man_From_UNCLE_1964.JPG', person: 'Russell' },
+            { url: 'https://upload.wikimedia.org/wikipedia/commons/d/db/Kurt_Russell_by_Gage_Skidmore_2.jpg', person: 'Russell' },
+            { url: 'https://upload.wikimedia.org/wikipedia/commons/3/3b/Kurt_Russell_2017.jpg', person: 'Russell' },
+            { url: 'https://upload.wikimedia.org/wikipedia/commons/b/b3/2012-04-21%3B_Mountain_Lake_Hotel%2C_Giles_Co.%2C_Virginia_-_7099092655.jpg', person: 'Swayze' },
+            { url: 'https://upload.wikimedia.org/wikipedia/commons/7/70/Alan_Light_-_Patrick_Swayze_-_1990_Grammy_Awards_%28cropped%29.jpg', person: 'Swayze' },
+            { url: 'https://upload.wikimedia.org/wikipedia/commons/6/63/Patrick_Swayze.jpg', person: 'Swayze' },
+            { url: 'https://upload.wikimedia.org/wikipedia/commons/a/a1/Patrick_Swayze_-_1990_Grammy_Awards_%28cropped%29.jpg', person: 'Swayze' },
+            { url: 'https://upload.wikimedia.org/wikipedia/commons/d/d4/Patrick_Swayze_2006.jpg', person: 'Swayze' },
+            { url: 'https://upload.wikimedia.org/wikipedia/commons/5/55/Paula_Abdul_%26_Patrick_Swayze_%28cropped%29.jpg', person: 'Swayze' },
+            { url: 'https://upload.wikimedia.org/wikipedia/commons/7/70/Patrick_Swayze_1990.jpg/640px-Patrick_Swayze_1990.jpg', person: 'Swayze' },
+            { url: 'https://upload.wikimedia.org/wikipedia/commons/6/69/Patrick_Swayze_2.jpg', person: 'Swayze' }
+        ];
+
+        let currentIndex = 0;
+        let score = 0;
+        let total = 0;
+        let canGuess = false;
+
+        // Shuffle the images array
+        const images = [...imageDatabase].sort(() => Math.random() - 0.5);
+
+        const imgElement = document.getElementById('person-image');
+        const loadingText = document.getElementById('loading-text');
+        const feedback = document.getElementById('feedback');
+        const scoreVal = document.getElementById('score-val');
+        const totalVal = document.getElementById('total-val');
+        const btnContainer = document.querySelector('.btn-container');
+
+        function loadNextImage() {
+            if (currentIndex >= images.length) {
+                endGame();
+                return;
+            }
+
+            canGuess = false;
+            imgElement.style.display = 'none';
+            loadingText.style.display = 'block';
+            loadingText.textContent = 'Loading...';
+            feedback.textContent = '';
+            
+            imgElement.src = images[currentIndex].url;
+            imgElement.onload = () => {
+                imgElement.style.display = 'block';
+                loadingText.style.display = 'none';
+                canGuess = true;
+            };
+            imgElement.onerror = () => {
+                // If an image fails to load, just skip to the next one
+                currentIndex++;
+                loadNextImage();
+            };
+        }
+
+        function makeGuess(person) {
+            if (!canGuess || currentIndex >= images.length) return;
+            canGuess = false; // Prevent double clicking
+
+            const correctPerson = images[currentIndex].person;
+            total++;
+
+            if (person === correctPerson) {
+                score++;
+                feedback.textContent = 'Correct! That is ' + (correctPerson === 'Swayze' ? 'Patrick Swayze' : 'Kurt Russell') + '.';
+                feedback.className = 'correct';
+            } else {
+                feedback.textContent = `Nope! That was actually ${correctPerson === 'Swayze' ? 'Patrick Swayze' : 'Kurt Russell'}.`;
+                feedback.className = 'wrong';
+            }
+
+            scoreVal.textContent = score;
+            totalVal.textContent = total;
+
+            currentIndex++;
+            setTimeout(loadNextImage, 1800); // Wait 1.8 seconds before moving to the next
+        }
+
+        function endGame() {
+            btnContainer.style.display = 'none';
+            imgElement.style.display = 'none';
+            loadingText.style.display = 'block';
+            loadingText.style.fontSize = '1.5rem';
+            loadingText.style.color = '#fff';
+            
+            let finalMessage = "Game Over!";
+            let percentage = total > 0 ? (score / total) : 0;
+            
+            if (percentage === 1) finalMessage = "Perfect! You're a true fan!";
+            else if (percentage >= 0.5) finalMessage = "Not bad! You know your stars.";
+            else finalMessage = "Oof... time to rewatch Road House and The Thing.";
+
+            loadingText.innerHTML = `<strong>${finalMessage}</strong><br><br>Final Score: ${score} / ${total}`;
+            feedback.textContent = '';
+        }
+
+        // Start the game
+        loadNextImage();
+    </script>
+</body>
+</html>
