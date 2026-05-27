@@ -358,7 +358,7 @@
                 <a href="tel:988" class="crisis-action-btn btn-call">Call 988</a>
                 <a href="sms:988" class="crisis-action-btn btn-text">Text 988</a>
             </div>
-            <button class="crisis-widget-hide-btn" aria-label="Hide this widget permanently">Hide this widget permanently</button>
+            <button class="crisis-widget-hide-btn" aria-label="Hide this widget during your visit">Hide for this visit</button>
         </div>
     </div>
 
@@ -367,8 +367,8 @@
             const widgetContainer = document.getElementById('crisis-widget');
             if (!widgetContainer) return;
 
-            // Check localStorage on load
-            if (localStorage.getItem('hide-crisis-widget') === 'true') {
+            // Check sessionStorage on load
+            if (sessionStorage.getItem('hide-crisis-widget') === 'true') {
                 widgetContainer.style.display = 'none';
                 return;
             }
@@ -464,11 +464,11 @@
                 }
             });
 
-            // Hide Widget Permanently
+            // Hide Widget for this visit
             hideBtn.addEventListener('click', function(e) {
                 e.stopPropagation();
-                if (confirm("Would you like to hide this urgent support shortcut? You can still find the 988 lifeline and other resources in our Minnesota Clinical Referral Directory at any time.")) {
-                    localStorage.setItem('hide-crisis-widget', 'true');
+                if (confirm("Would you like to hide this urgent support shortcut for the rest of your visit? It will reappear next time you visit our site, and you can always find 988 in our Referral Directory.")) {
+                    sessionStorage.setItem('hide-crisis-widget', 'true');
                     widgetContainer.style.display = 'none';
                 }
             });
