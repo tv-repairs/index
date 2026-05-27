@@ -1,0 +1,938 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clinical Referral Directory | TV Repairs Coaching</title>
+    <meta name="description" content="A curated directory of LGBTQ+ affirming, trauma-informed clinical clinics, individual practitioners, and community wellbeing resources in Minnesota.">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="scope-style.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="assets/soft_turtle_logo.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
+
+    <!-- Microsoft Clarity Tracking Code -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window,document,"clarity","script","wxhlk063t3");
+    </script>
+</head>
+<body>
+    <header class="site-header">
+        <div class="container header-container">
+            <div class="logo">
+                <a href="index.html" style="display: flex; align-items: center; gap: 10px; text-decoration: none;">
+                    <img src="assets/soft_turtle_logo.png" alt="Line drawing of a sea turtle, logo for TV Repairs Health Coaching" class="logo-img">
+                    <span class="logo-text">TV Repairs Coaching</span>
+                </a>
+            </div>
+            <nav aria-label="Main Navigation" class="main-nav">
+                <div class="nav-actions">
+                    <a href="index.html#contact" class="btn btn-primary nav-cta">Let's Talk</a>
+                    <button class="menu-toggle" id="menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="dropdown-menu">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--color-green-dark)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="3" y1="12" x2="21" y2="12"></line>
+                            <line x1="3" y1="6" x2="21" y2="6"></line>
+                            <line x1="3" y1="18" x2="21" y2="18"></line>
+                        </svg>
+                    </button>
+                </div>
+                <!-- Dropdown Menu -->
+                <div id="dropdown-menu" class="dropdown-menu">
+                    <ul class="dropdown-links">
+                        <li><a href="index.html#who-i-work-with">Who I Work With</a></li>
+                        <li><a href="index.html#services">My Services</a></li>
+                        <li><a href="index.html#process">How It Works</a></li>
+                        <li style="border-top: 1px solid rgba(16, 63, 42, 0.1); margin-top: 0.5rem; padding-top: 0.5rem;"><a href="scope-of-practice.html">Scope of Practice</a></li>
+                        <li><a href="healing-modalities.html">Healing Modalities</a></li>
+                        <li><a href="referral-directory.html" style="color: var(--color-red-accent);">Referral Directory</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Header -->
+        <section class="scope-hero" aria-labelledby="directory-hero-title">
+            <div class="container">
+                <h1 id="directory-hero-title">Clinical Referral Directory</h1>
+                <p>A curated database of LGBTQ+ affirming, trauma-informed local resources. Explore organizations, individual practitioners, and community networks.</p>
+            </div>
+        </section>
+
+        <!-- Directory Section -->
+        <section class="section bg-light" style="padding-top: 2rem;">
+            <div class="container">
+                
+                <!-- Main Directory Tabs -->
+                <div class="directory-tabs" role="tablist" aria-label="Referral sections">
+                    <button class="dir-tab-btn active" role="tab" aria-selected="true" aria-controls="panel-organizations" id="tab-organizations">Clinics & Organizations</button>
+                    <button class="dir-tab-btn" role="tab" aria-selected="false" aria-controls="panel-individuals" id="tab-individuals">Individual Practitioners</button>
+                    <button class="dir-tab-btn" role="tab" aria-selected="false" aria-controls="panel-community" id="tab-community">Community & Wellbeing</button>
+                </div>
+
+                <!-- Search & Filters -->
+                <div class="directory-controls">
+                    <div class="search-wrapper">
+                        <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                        </svg>
+                        <input type="text" id="dir-search" class="search-input" placeholder="Search resources..." aria-label="Search referral directory">
+                    </div>
+
+                    <!-- Tab 1 Filters: Clinics & Organizations -->
+                    <div class="filter-pills active-pills" id="pills-organizations" role="group" aria-label="Filter organizations by category">
+                        <button class="filter-pill active" data-filter="all">All Clinics</button>
+                        <button class="filter-pill" data-filter="somatic">Somatic / Body-Based</button>
+                        <button class="filter-pill" data-filter="kap-tms">KAP & TMS</button>
+                        <button class="filter-pill" data-filter="queer">QTBIPOC & Queer Centering</button>
+                        <button class="filter-pill" data-filter="relationship">Relationship & Intimacy</button>
+                        <button class="filter-pill" data-filter="art">Art Therapy</button>
+                    </div>
+
+                    <!-- Tab 2 Filters: Individual Practitioners -->
+                    <div class="filter-pills" id="pills-individuals" role="group" aria-label="Filter individual practitioners by category" style="display: none;">
+                        <button class="filter-pill active" data-filter="all">All Practitioners</button>
+                        <button class="filter-pill" data-filter="cbt-dbt">CBT / DBT Tools</button>
+                        <button class="filter-pill" data-filter="ifs-act">IFS & ACT</button>
+                        <button class="filter-pill" data-filter="somatic-emdr">EMDR & Somatic</button>
+                        <button class="filter-pill" data-filter="sex-intimacy">Sex & Intimacy</button>
+                        <button class="filter-pill" data-filter="pre-licensed">Pre-Licensed Support</button>
+                    </div>
+
+                    <!-- Tab 3 Filters: Community Resources -->
+                    <div class="filter-pills" id="pills-community" role="group" aria-label="Filter community resources by category" style="display: none;">
+                        <button class="filter-pill active" data-filter="all">All Resources</button>
+                        <button class="filter-pill" data-filter="advocacy-support">Advocacy & Support</button>
+                        <button class="filter-pill" data-filter="recovery-spirit">Recovery & Spiritual</button>
+                        <button class="filter-pill" data-filter="social-fitness">Social & Fitness</button>
+                        <button class="filter-pill" data-filter="peer-urgent">Peer Support & Urgent Care</button>
+                    </div>
+                </div>
+
+                <!-- Fallback "No Results" Panel -->
+                <div class="no-results" id="no-results-msg" style="display: none; max-width: 800px; margin: 0 auto 2rem;">
+                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#777" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom: 1rem;">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                        <line x1="8" y1="11" x2="14" y2="11"></line>
+                    </svg>
+                    <p>No referrals match your current search criteria.</p>
+                    <button class="btn btn-primary" id="clear-filters-btn" style="padding: 0.5rem 1.5rem; font-size: 0.9rem;">Clear Search & Filters</button>
+                </div>
+
+                <!-- ================= TAB 1: CLINICS & ORGANIZATIONS ================= -->
+                <div class="directory-panel active" id="panel-organizations" role="tabpanel" aria-labelledby="tab-organizations">
+                    <div class="directory-grid">
+                        
+                        <!-- The Remedy MN -->
+                        <article class="directory-card" data-tags="kap-tms somatic queer">
+                            <h4>The Remedy MN</h4>
+                            <p>Offers deeply affirming care alongside specialized interventional psychiatry, reproductive mental health, TMS, and Ketamine-Assisted Psychotherapy (KAP) to support lasting recovery.</p>
+                            <div class="directory-badges">
+                                <span class="directory-badge">KAP</span>
+                                <span class="directory-badge">TMS</span>
+                                <span class="directory-badge">EMDR</span>
+                                <span class="directory-badge">DBT</span>
+                                <span class="directory-badge">Gender Affirming</span>
+                            </div>
+                            <a href="https://theremedymn.com/" target="_blank" class="card-link" aria-label="Visit The Remedy MN website">
+                                Visit Website 
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                                    <polyline points="12 5 19 12 12 19"></polyline>
+                                </svg>
+                            </a>
+                        </article>
+
+                        <!-- Conscious Alchemy -->
+                        <article class="directory-card" data-tags="kap-tms somatic queer">
+                            <h4>Conscious Alchemy</h4>
+                            <p>A holistic, trauma-focused clinic specializing in Ketamine-Assisted Psychotherapy (KAP) with dedicated, highly intentional healing circles and individual spaces for LGBTQ+ individuals.</p>
+                            <div class="directory-badges">
+                                <span class="directory-badge">KAP</span>
+                                <span class="directory-badge">Somatic Experiencing</span>
+                                <span class="directory-badge">IFS</span>
+                                <span class="directory-badge">EMDR</span>
+                                <span class="directory-badge">ACT</span>
+                            </div>
+                            <a href="https://consciousalchemy.co/" target="_blank" class="card-link" aria-label="Visit Conscious Alchemy website">
+                                Visit Website 
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                                    <polyline points="12 5 19 12 12 19"></polyline>
+                                </svg>
+                            </a>
+                        </article>
+
+                        <!-- Mind Revolution -->
+                        <article class="directory-card" data-tags="queer relationship">
+                            <h4>Mind Revolution</h4>
+                            <p>An online practice featuring "QueerSpace" — a dedicated virtual environment for LGBTQ+ individuals and couples focusing on developmental trauma, addiction recovery, and relationships.</p>
+                            <div class="directory-badges">
+                                <span class="directory-badge">IFS</span>
+                                <span class="directory-badge">CBT</span>
+                                <span class="directory-badge">QueerSpace</span>
+                                <span class="directory-badge">Couples Therapy</span>
+                            </div>
+                            <a href="https://www.mindrevolutiontherapy.com/" target="_blank" class="card-link" aria-label="Visit Mind Revolution website">
+                                Visit Website 
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                                    <polyline points="12 5 19 12 12 19"></polyline>
+                                </svg>
+                            </a>
+                        </article>
+
+                        <!-- Relationship Therapy Center -->
+                        <article class="directory-card" data-tags="relationship somatic">
+                            <h4>Relationship Therapy Center</h4>
+                            <p>Focuses on intensive therapy for relationships in crisis, employing therapists explicitly trained to affirm diverse relationship dynamics, neurodivergent partnerships, and LGBTQ+ couples.</p>
+                            <div class="directory-badges">
+                                <span class="directory-badge">Somatic Experiencing</span>
+                                <span class="directory-badge">IFS</span>
+                                <span class="directory-badge">EMDR</span>
+                                <span class="directory-badge">Brainspotting</span>
+                                <span class="directory-badge">Art Therapy</span>
+                            </div>
+                            <a href="https://www.mncouplescounseling.com/" target="_blank" class="card-link" aria-label="Visit Relationship Therapy Center website">
+                                Visit Website 
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                                    <polyline points="12 5 19 12 12 19"></polyline>
+                                </svg>
+                            </a>
+                        </article>
+
+                        <!-- Interna Mental Health -->
+                        <article class="directory-card" data-tags="queer somatic relationship">
+                            <h4>Interna Mental Health</h4>
+                            <p>A queer- and woman-owned collective of liberation-focused providers who explicitly affirm and support trans identities, neurodivergent minds, polyamory, and kink relationships.</p>
+                            <div class="directory-badges">
+                                <span class="directory-badge">ACT</span>
+                                <span class="directory-badge">Somatic Experiencing</span>
+                                <span class="directory-badge">EMDR</span>
+                                <span class="directory-badge">Brainspotting</span>
+                                <span class="directory-badge">Unified Protocol</span>
+                            </div>
+                            <a href="https://internamentalhealth.com/" target="_blank" class="card-link" aria-label="Visit Interna Mental Health website">
+                                Visit Website 
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                                    <polyline points="12 5 19 12 12 19"></polyline>
+                                </svg>
+                            </a>
+                        </article>
+
+                        <!-- Edges Wellness Center -->
+                        <article class="directory-card" data-tags="queer art somatic">
+                            <h4>Edges Wellness Center</h4>
+                            <p>Grounded in collective liberation, anti-racism, and disability justice, this local practice centers Queer, Trans, neurodivergent, and BIPOC communities through intersectional providers.</p>
+                            <div class="directory-badges">
+                                <span class="directory-badge">Art Therapy</span>
+                                <span class="directory-badge">Brainspotting</span>
+                                <span class="directory-badge">IFS</span>
+                                <span class="directory-badge">Somatic Experiencing</span>
+                                <span class="directory-badge">Disability Justice</span>
+                            </div>
+                            <a href="https://edgeswellness.com/" target="_blank" class="card-link" aria-label="Visit Edges Wellness Center website">
+                                Visit Website 
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                                    <polyline points="12 5 19 12 12 19"></polyline>
+                                </svg>
+                            </a>
+                        </article>
+
+                        <!-- Ocote Healing & Counseling -->
+                        <article class="directory-card" data-tags="queer somatic art">
+                            <h4>Ocote Healing & Counseling</h4>
+                            <p>A decolonial, anti-oppressive practice led by a queer, Indigenous provider offering Somatic Experiencing (SE) and deep integration explicitly centered around QTBIPOC healing.</p>
+                            <div class="directory-badges">
+                                <span class="directory-badge">Somatic Experiencing</span>
+                                <span class="directory-badge">Brainspotting</span>
+                                <span class="directory-badge">IFS</span>
+                                <span class="directory-badge">Art Therapy</span>
+                                <span class="directory-badge">Indigenous Led</span>
+                            </div>
+                            <a href="https://www.ocotehealingandcounseling.com/" target="_blank" class="card-link" aria-label="Visit Ocote Healing & Counseling website">
+                                Visit Website 
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                                    <polyline points="12 5 19 12 12 19"></polyline>
+                                </svg>
+                            </a>
+                        </article>
+
+                        <!-- Art Therapy of MN -->
+                        <article class="directory-card" data-tags="art queer relationship">
+                            <h4>Art Therapy of MN</h4>
+                            <p>A neurodivergent-affirming clinic featuring a specialized "Therapy Support Fund" specifically for trans, queer, and BIPOC clients facing financial or socioeconomic barriers.</p>
+                            <div class="directory-badges">
+                                <span class="directory-badge">Art Therapy</span>
+                                <span class="directory-badge">Sex Therapy</span>
+                                <span class="directory-badge">Narrative Therapy</span>
+                                <span class="directory-badge">Support Fund</span>
+                            </div>
+                            <a href="https://arttherapymn.com/" target="_blank" class="card-link" aria-label="Visit Art Therapy of MN website">
+                                Visit Website 
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                                    <polyline points="12 5 19 12 12 19"></polyline>
+                                </svg>
+                            </a>
+                        </article>
+
+                        <!-- Lineage Counseling -->
+                        <article class="directory-card" data-tags="queer somatic relationship">
+                            <h4>Lineage Counseling</h4>
+                            <p>Specializes in supporting queer, trans, non-monogamous, and disabled clients through lifestyle transitions, focusing on trauma-informed and systems-focused models.</p>
+                            <div class="directory-badges">
+                                <span class="directory-badge">Brainspotting</span>
+                                <span class="directory-badge">Sex Therapy</span>
+                                <span class="directory-badge">IFS</span>
+                                <span class="directory-badge">EMDR</span>
+                                <span class="directory-badge">Narrative Therapy</span>
+                            </div>
+                            <a href="https://lineagecounseling.com/" target="_blank" class="card-link" aria-label="Visit Lineage Counseling website">
+                                Visit Website 
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                                    <polyline points="12 5 19 12 12 19"></polyline>
+                                </svg>
+                            </a>
+                        </article>
+
+                        <!-- Transcend Psychotherapy -->
+                        <article class="directory-card" data-tags="queer somatic">
+                            <h4>Transcend Psychotherapy</h4>
+                            <p>A collective centering transgender individuals and providing identity-specific clinical support groups while working to decolonize local mental health standards.</p>
+                            <div class="directory-badges">
+                                <span class="directory-badge">Somatic Experiencing</span>
+                                <span class="directory-badge">EMDR</span>
+                                <span class="directory-badge">IFS</span>
+                                <span class="directory-badge">Trans Centered</span>
+                                <span class="directory-badge">Support Groups</span>
+                            </div>
+                            <a href="https://transcendpsychotherapy.com/" target="_blank" class="card-link" aria-label="Visit Transcend Psychotherapy website">
+                                Visit Website 
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                                    <polyline points="12 5 19 12 12 19"></polyline>
+                                </svg>
+                            </a>
+                        </article>
+
+                        <!-- Namu Integrative Therapy -->
+                        <article class="directory-card" data-tags="somatic queer art">
+                            <h4>Namu Integrative Therapy</h4>
+                            <p>A justice-oriented, decolonial practice blending somatic frameworks with Brainspotting and EMDR to support neurodivergent, LGBTQ+, and polyamorous clients.</p>
+                            <div class="directory-badges">
+                                <span class="directory-badge">Somatic Experiencing</span>
+                                <span class="directory-badge">Brainspotting</span>
+                                <span class="directory-badge">EMDR</span>
+                                <span class="directory-badge">IFS</span>
+                                <span class="directory-badge">Decolonial Care</span>
+                            </div>
+                            <a href="https://www.namuintegrative.com/" target="_blank" class="card-link" aria-label="Visit Namu Integrative Therapy website">
+                                Visit Website 
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                                    <polyline points="12 5 19 12 12 19"></polyline>
+                                </svg>
+                            </a>
+                        </article>
+
+                    </div>
+                </div>
+
+                <!-- ================= TAB 2: INDIVIDUAL PRACTITIONERS ================= -->
+                <div class="directory-panel" id="panel-individuals" role="tabpanel" aria-labelledby="tab-individuals">
+                    <div class="directory-grid">
+                        
+                        <!-- Krystyna Kaminski -->
+                        <article class="directory-card" data-tags="cbt-dbt">
+                            <h4>Krystyna Kaminski, LGSW</h4>
+                            <p>Affirms LGBTQ+ and neurodivergent (ADHD/Autism) identities through a structured, highly actionable "no-BS" approach focused on core behavioral tools for high-achievers experiencing burnout.</p>
+                            <div class="directory-badges">
+                                <span class="directory-badge">CBT</span>
+                                <span class="directory-badge">DBT</span>
+                                <span class="directory-badge">High-Achievers</span>
+                                <span class="directory-badge">Neurodivergent Affirming</span>
+                            </div>
+                            <a href="https://www.psychologytoday.com/us/therapists/krystyna-kaminski-saint-paul-mn/1689574" target="_blank" class="card-link" aria-label="Visit Krystyna Kaminski's profile">
+                                View Profile 
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                                    <polyline points="12 5 19 12 12 19"></polyline>
+                                </svg>
+                            </a>
+                        </article>
+
+                        <!-- Samara Fairwell -->
+                        <article class="directory-card" data-tags="ifs-act">
+                            <h4>Samara Fairwell, LPCC</h4>
+                            <p>Utilizes an explicitly feminist, decolonized therapeutic framework to support the LGBTQ+ community and "neuro-spicy" individuals navigating complex developmental trauma and menopause transitions.</p>
+                            <div class="directory-badges">
+                                <span class="directory-badge">IFS</span>
+                                <span class="directory-badge">DBT</span>
+                                <span class="directory-badge">Feminist Therapy</span>
+                                <span class="directory-badge">Life Transitions</span>
+                            </div>
+                            <a href="https://sagentbh.com/our-providers/samara-fairwell/" target="_blank" class="card-link" aria-label="Visit Samara Fairwell's provider profile">
+                                View Profile 
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                                    <polyline points="12 5 19 12 12 19"></polyline>
+                                </svg>
+                            </a>
+                        </article>
+
+                        <!-- Rick Laska -->
+                        <article class="directory-card" data-tags="sex-intimacy somatic-emdr">
+                            <h4>Rick Laska, MA, LPCC</h4>
+                            <p>A Certified Sex Therapist providing affirmative care for sexual identity, alternative relationship models, and intimacy, uniquely offering safe psychedelic integration support alongside traditional therapy.</p>
+                            <div class="directory-badges">
+                                <span class="directory-badge">Sex Therapy</span>
+                                <span class="directory-badge">KAP Integration</span>
+                                <span class="directory-badge">Intimacy</span>
+                                <span class="directory-badge">LGBTQ+ Affirming</span>
+                            </div>
+                            <a href="https://www.laskatherapy.com/" target="_blank" class="card-link" aria-label="Visit Rick Laska's website">
+                                Visit Website 
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                                    <polyline points="12 5 19 12 12 19"></polyline>
+                                </svg>
+                            </a>
+                        </article>
+
+                        <!-- Jules Waligora -->
+                        <article class="directory-card" data-tags="somatic-emdr sex-intimacy pre-licensed">
+                            <h4>Jules Waligora, MA</h4>
+                            <p>Cultivates a sex-positive, ENM/kink-affirming, and warm environment using humor to support queer and neurodivergent clients navigating misophonia, OCD, and complex dissociative trauma.</p>
+                            <div class="directory-badges">
+                                <span class="directory-badge">EMDR</span>
+                                <span class="directory-badge">Pre-Licensed Professional</span>
+                                <span class="directory-badge">Kink Affirming</span>
+                                <span class="directory-badge">OCD & Trauma</span>
+                            </div>
+                            <p style="font-size:0.8rem; color:#888; font-style:italic; margin-top:-0.5rem; margin-bottom:1rem;">Supervised by a licensed clinical sponsor.</p>
+                            <a href="https://www.psychologytoday.com/us/therapists/jules-waligora-saint-paul-mn/1606205" target="_blank" class="card-link" aria-label="Visit Jules Waligora's profile">
+                                View Profile 
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                                    <polyline points="12 5 19 12 12 19"></polyline>
+                                </svg>
+                            </a>
+                        </article>
+
+                        <!-- Augustin Kendall -->
+                        <article class="directory-card" data-tags="ifs-act somatic-emdr sex-intimacy">
+                            <h4>Augustin Kendall, LPCC</h4>
+                            <p>Co-creates a fiercely liberatory, trauma-informed healing space rooted in Disability Justice, focusing on LGBTQ+ individuals, alternative relationship styles (kink/BDSM), and medical trauma.</p>
+                            <div class="directory-badges">
+                                <span class="directory-badge">IFS</span>
+                                <span class="directory-badge">Brainspotting</span>
+                                <span class="directory-badge">Disability Justice</span>
+                                <span class="directory-badge">Medical Trauma</span>
+                            </div>
+                            <a href="https://augustinkendalltherapy.com/" target="_blank" class="card-link" aria-label="Visit Augustin Kendall's website">
+                                Visit Website 
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                                    <polyline points="12 5 19 12 12 19"></polyline>
+                                </svg>
+                            </a>
+                        </article>
+
+                        <!-- Alicia Losier -->
+                        <article class="directory-card" data-tags="ifs-act">
+                            <h4>Alicia Losier, LMFT</h4>
+                            <p>Offers warm, anti-oppressive trauma-informed support specializing in helping clients navigate, gain clarity on, and safely disengage from toxic or unsupportive family cycles.</p>
+                            <div class="directory-badges">
+                                <span class="directory-badge">Narrative Therapy</span>
+                                <span class="directory-badge">Toxic Family Cycles</span>
+                                <span class="directory-badge">LMFT</span>
+                            </div>
+                            <a href="https://www.psychologytoday.com/us/therapists/alicia-losier-golden-valley-mn/1214722" target="_blank" class="card-link" aria-label="Visit Alicia Losier's profile">
+                                View Profile 
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                                    <polyline points="12 5 19 12 12 19"></polyline>
+                                </svg>
+                            </a>
+                        </article>
+
+                        <!-- Anna Blonigen -->
+                        <article class="directory-card" data-tags="ifs-act pre-licensed">
+                            <h4>Anna Blonigen, MS</h4>
+                            <p>A queer, nonbinary pre-licensed professional offering a deeply compassionate, identity-affirming space to help LGBTQ+ individuals process anxiety, shame, and transition stressors.</p>
+                            <div class="directory-badges">
+                                <span class="directory-badge">ACT</span>
+                                <span class="directory-badge">Pre-Licensed Professional</span>
+                                <span class="directory-badge">Queer & Nonbinary</span>
+                            </div>
+                            <p style="font-size:0.8rem; color:#888; font-style:italic; margin-top:-0.5rem; margin-bottom:1rem;">Supervised by a licensed clinical sponsor.</p>
+                            <a href="https://www.luxwellnessmn.com/anna-blonigen" target="_blank" class="card-link" aria-label="Visit Anna Blonigen's profile">
+                                View Profile 
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                                    <polyline points="12 5 19 12 12 19"></polyline>
+                                </svg>
+                            </a>
+                        </article>
+
+                        <!-- Hannah Bech -->
+                        <article class="directory-card" data-tags="sex-intimacy pre-licensed">
+                            <h4>Hannah Bech, BA</h4>
+                            <p>Grounded in reproductive justice, Hannah co-creates affirming counseling spaces focusing on LGBTQ+ couples, neurodivergent (ADHD) partnerships, and perinatal mental health transitions.</p>
+                            <div class="directory-badges">
+                                <span class="directory-badge">Couples Counseling</span>
+                                <span class="directory-badge">Perinatal Health</span>
+                                <span class="directory-badge">Pre-Licensed Professional</span>
+                                <span class="directory-badge">Reproductive Justice</span>
+                            </div>
+                            <p style="font-size:0.8rem; color:#888; font-style:italic; margin-top:-0.5rem; margin-bottom:1rem;">Supervised by a licensed clinical sponsor.</p>
+                            <a href="https://mnmentalhealthconsulting.com/hannah-bech/" target="_blank" class="card-link" aria-label="Visit Hannah Bech's profile">
+                                View Profile 
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                                    <polyline points="12 5 19 12 12 19"></polyline>
+                                </svg>
+                            </a>
+                        </article>
+
+                        <!-- Olivia Bates -->
+                        <article class="directory-card" data-tags="somatic-emdr pre-licensed">
+                            <h4>Olivia Bates, MA</h4>
+                            <p>Actively welcomes polyamorous structures, LGBTQ+ partners, and interracial relationships, utilizing body-based somatic experiencing and Brainspotting to support complex family dynamics.</p>
+                            <div class="directory-badges">
+                                <span class="directory-badge">Brainspotting</span>
+                                <span class="directory-badge">Somatic Experiencing</span>
+                                <span class="directory-badge">Pre-Licensed Professional</span>
+                                <span class="directory-badge">Relational Systems</span>
+                            </div>
+                            <p style="font-size:0.8rem; color:#888; font-style:italic; margin-top:-0.5rem; margin-bottom:1rem;">Supervised by a licensed clinical sponsor.</p>
+                            <a href="https://www.psychologytoday.com/us/therapists/olivia-bates-new-brighton-mn/1317732" target="_blank" class="card-link" aria-label="Visit Olivia Bates' profile">
+                                View Profile 
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                                    <polyline points="12 5 19 12 12 19"></polyline>
+                                </svg>
+                            </a>
+                        </article>
+
+                    </div>
+                </div>
+
+                <!-- ================= TAB 3: COMMUNITY RESOURCES ================= -->
+                <div class="directory-panel" id="panel-community" role="tabpanel" aria-labelledby="tab-community">
+                    <div class="directory-grid">
+                        
+                        <!-- OutFront Minnesota -->
+                        <article class="directory-card" data-tags="advocacy-support">
+                            <h4>OutFront Minnesota</h4>
+                            <p>Minnesota's leading LGBTQ+ advocacy organization providing direct anti-violence advocacy helplines, gender equity support, training resources, and community safety services.</p>
+                            <div class="directory-badges">
+                                <span class="directory-badge">Advocacy Helpline</span>
+                                <span class="directory-badge">Anti-Violence</span>
+                                <span class="directory-badge">Community Safety</span>
+                            </div>
+                            <a href="https://www.outfront.org/" target="_blank" class="card-link" aria-label="Visit OutFront Minnesota website">
+                                Visit Website 
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                                    <polyline points="12 5 19 12 12 19"></polyline>
+                                </svg>
+                            </a>
+                        </article>
+
+                        <!-- MN LGBTQ+ Therapists Network -->
+                        <article class="directory-card" data-tags="advocacy-support peer-urgent">
+                            <h4>MN LGBTQ+ Therapists</h4>
+                            <p>A professional membership organization providing a public, highly searchable directory of queer-affirming mental health therapists and supportive clinical referrals across Minnesota.</p>
+                            <div class="directory-badges">
+                                <span class="directory-badge">Therapist Finder</span>
+                                <span class="directory-badge">Queer Network</span>
+                                <span class="directory-badge">Referrals Database</span>
+                            </div>
+                            <a href="https://lgbttherapists.wildapricot.org/" target="_blank" class="card-link" aria-label="Visit MN LGBTQ+ Therapists Network website">
+                                Visit Website 
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                                    <polyline points="12 5 19 12 12 19"></polyline>
+                                </svg>
+                            </a>
+                        </article>
+
+                        <!-- Gender Expansive Nutrition -->
+                        <article class="directory-card" data-tags="advocacy-support">
+                            <h4>Gender Expansive Nutrition</h4>
+                            <p>Highly specialized nutrition and body image support specifically tailored for trans, nonbinary, and gender-diverse individuals exploring dysphoria and peaceful food relationships.</p>
+                            <div class="directory-badges">
+                                <span class="directory-badge">Nutrition Support</span>
+                                <span class="directory-badge">Trans Affirming</span>
+                                <span class="directory-badge">Body Dysphoria Care</span>
+                            </div>
+                            <a href="https://genderexpansivenutrition.com/" target="_blank" class="card-link" aria-label="Visit Gender Expansive Nutrition website">
+                                Visit Website 
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                                    <polyline points="12 5 19 12 12 19"></polyline>
+                                </svg>
+                            </a>
+                        </article>
+
+                        <!-- All God’s Children Metropolitan Community Church -->
+                        <article class="directory-card" data-tags="recovery-spirit">
+                            <h4>All God’s Children MCC</h4>
+                            <p>A vibrant, long-standing spiritual community in Minneapolis established explicitly for and by LGBTQ+ individuals to foster faith, spiritual wellness, and collective advocacy.</p>
+                            <div class="directory-badges">
+                                <span class="directory-badge">Spiritual Wellness</span>
+                                <span class="directory-badge">Affirming Faith</span>
+                                <span class="directory-badge">Twin Cities Local</span>
+                            </div>
+                            <a href="https://www.agcmcc.org/" target="_blank" class="card-link" aria-label="Visit All God's Children MCC website">
+                                Visit Website 
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                                    <polyline points="12 5 19 12 12 19"></polyline>
+                                </svg>
+                            </a>
+                        </article>
+
+                        <!-- Out and Sober MN -->
+                        <article class="directory-card" data-tags="recovery-spirit advocacy-support">
+                            <h4>Out and Sober MN</h4>
+                            <p>A specialized LGBTQ+ organization helping create drug-and-alcohol-free social connections, peer mentorship, and sober activities for queer individuals in addiction recovery.</p>
+                            <div class="directory-badges">
+                                <span class="directory-badge">Sober Connections</span>
+                                <span class="directory-badge">Addiction Recovery</span>
+                                <span class="directory-badge">Peer Support</span>
+                            </div>
+                            <a href="https://outsobermn.org/" target="_blank" class="card-link" aria-label="Visit Out and Sober MN website">
+                                Visit Website 
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                                    <polyline points="12 5 19 12 12 19"></polyline>
+                                </svg>
+                            </a>
+                        </article>
+
+                        <!-- Stonewall Sports - Twin Cities -->
+                        <article class="directory-card" data-tags="social-fitness">
+                            <h4>Stonewall Sports Twin Cities</h4>
+                            <p>An active LGBTQ+ community sports and social league providing recreational leagues (kickball, dodgeball, etc.) to support both physical wellness and peer connections.</p>
+                            <div class="directory-badges">
+                                <span class="directory-badge">Social Leagues</span>
+                                <span class="directory-badge">Physical Wellness</span>
+                                <span class="directory-badge">Peer Connection</span>
+                            </div>
+                            <a href="https://sites.google.com/stonewallsports.org/stonewallsportstwincities" target="_blank" class="card-link" aria-label="Visit Stonewall Sports Twin Cities website">
+                                Visit Website 
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                                    <polyline points="12 5 19 12 12 19"></polyline>
+                                </svg>
+                            </a>
+                        </article>
+
+                        <!-- Minnesota Warmline -->
+                        <article class="directory-card" data-tags="peer-urgent">
+                            <h4>Minnesota Warmline</h4>
+                            <p>A specialized, non-emergency telephone support line offering free peer-to-peer mental health support, active listening, and recovery resources from certified specialists.</p>
+                            <div class="directory-badges">
+                                <span class="directory-badge">Peer Support</span>
+                                <span class="directory-badge">Non-Emergency Line</span>
+                                <span class="directory-badge">Free Call or Text</span>
+                            </div>
+                            <p style="font-weight:600; color:var(--color-green-dark); font-size:0.95rem; margin-top:-0.5rem; margin-bottom:1.5rem;">Call 855-WARMLINE or text "Support" to 85511</p>
+                            <a href="https://mentalhealthmn.org/what-we-do/peer-support/minnesota-warmline/" target="_blank" class="card-link" aria-label="Visit Minnesota Warmline website">
+                                Visit Website 
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                                    <polyline points="12 5 19 12 12 19"></polyline>
+                                </svg>
+                            </a>
+                        </article>
+
+                        <!-- Walk-In Counseling Center -->
+                        <article class="directory-card" data-tags="peer-urgent">
+                            <h4>Walk-In Counseling Center</h4>
+                            <p>Provides free, urgent, and completely anonymous mental health counseling services in the Twin Cities. Ideal for uninsured or underinsured people needing immediate therapeutic support.</p>
+                            <div class="directory-badges">
+                                <span class="directory-badge">Free Urgent Care</span>
+                                <span class="directory-badge">No Insurance Required</span>
+                                <span class="directory-badge">Walk-In & Online</span>
+                            </div>
+                            <a href="https://walkin.org" target="_blank" class="card-link" aria-label="Visit Walk-In Counseling Center website">
+                                Visit Website 
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                                    <polyline points="12 5 19 12 12 19"></polyline>
+                                </svg>
+                            </a>
+                        </article>
+
+                        <!-- Quatrefoil Library -->
+                        <article class="directory-card" data-tags="social-fitness advocacy-support">
+                            <h4>Quatrefoil Library</h4>
+                            <p>A community-centered LGBTQ+ library in Minneapolis hosting thousands of books, historical archives, and literature alongside regular queer social gatherings and groups.</p>
+                            <div class="directory-badges">
+                                <span class="directory-badge">Queer Literature</span>
+                                <span class="directory-badge">Archives</span>
+                                <span class="directory-badge">Social Gatherings</span>
+                            </div>
+                            <a href="https://qlibrary.org/" target="_blank" class="card-link" aria-label="Visit Quatrefoil Library website">
+                                Visit Website 
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                                    <polyline points="12 5 19 12 12 19"></polyline>
+                                </svg>
+                            </a>
+                        </article>
+
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Crisis / Urgent Support Banner Section -->
+        <section class="crisis-section" aria-labelledby="crisis-title">
+            <div class="container crisis-box">
+                <h3 id="crisis-title">Urgent Support & Crisis Resources</h3>
+                <p style="text-align: center; max-width: 700px; margin: 0 auto 2rem; line-height: 1.6;">If you are in immediate distress, emotional crisis, or are facing an emergency, please prioritize the specialized peer networks and crisis services listed below. <em>This directory is for educational support purposes and is not a substitute for immediate emergency intervention.</em></p>
+                
+                <div class="crisis-grid">
+                    <!-- National Lifeline -->
+                    <article class="crisis-card">
+                        <h4>Suicide & Crisis Lifeline</h4>
+                        <p>Free, confidential, 24/7 clinical mental health support across the United States. Available via call or text.</p>
+                        <strong>Call or Text: 988</strong>
+                    </article>
+
+                    <!-- Crisis Text Line -->
+                    <article class="crisis-card">
+                        <h4>Crisis Text Line</h4>
+                        <p>Free, confidential, 24/7 support for any crisis. Text with a trained counselor instantly.</p>
+                        <strong>Text HOME to 741741</strong>
+                    </article>
+
+                    <!-- Trevor Project -->
+                    <article class="crisis-card">
+                        <h4>The Trevor Project Lifeline</h4>
+                        <p>Specialized suicide prevention and crisis counseling for LGBTQ+ young people under age 25.</p>
+                        <strong>Call: 1-866-488-7386 or Text START to 678-678</strong>
+                    </article>
+
+                    <!-- Trans Lifeline -->
+                    <article class="crisis-card">
+                        <h4>Trans Lifeline</h4>
+                        <p>A peer-support phone service run by trans people, for trans and questioning peers.</p>
+                        <strong>Call: 877-565-8860</strong>
+                    </article>
+                </div>
+
+                <p style="text-align: center; font-size: 0.9rem; color: #777; margin-top: 2rem;">If you are in immediate physical danger, you can also dial <strong>911</strong> or go to your nearest emergency room.</p>
+            </div>
+        </section>
+
+        <!-- Transition Call to Action Banner -->
+        <section class="section" aria-labelledby="cta-transition-title" style="padding-top: 4rem; padding-bottom: 4rem;">
+            <div class="container text-center">
+                <h2 id="cta-transition-title" class="section-title">Supportive Healing Resources</h2>
+                <p class="section-subtitle" style="margin-bottom: 2rem;">Now that you have browsed our clinical directory, explore our other guidelines:</p>
+                <div class="grid cards" style="max-width: 800px; margin: 0 auto;">
+                    <article class="card who-card" style="padding: 2.5rem 2rem; border-radius: 20px;">
+                        <h3 style="color: var(--color-green-med);">Scope of Practice</h3>
+                        <p style="font-size: 0.95rem; line-height: 1.6; margin-bottom: 1.5rem;">Understand the professional boundaries and the 7 Pillars of Ethical Practice of our Integrative Health Coaching alliance.</p>
+                        <a href="scope-of-practice.html" class="btn btn-primary" style="display: inline-block; font-size: 0.85rem; padding: 0.6rem 1.5rem;">Review Scope</a>
+                    </article>
+                    <article class="card who-card" style="padding: 2.5rem 2rem; border-radius: 20px;">
+                        <h3 style="color: var(--color-green-med);">Healing Modality Guide</h3>
+                        <p style="font-size: 0.95rem; line-height: 1.6; margin-bottom: 1.5rem;">Explore our comprehensive educational guide explaining somatic, cognitive, and parts-based healing therapies like Somatic Experiencing, EMDR, and IFS.</p>
+                        <a href="healing-modalities.html" class="btn btn-primary" style="display: inline-block; font-size: 0.85rem; padding: 0.6rem 1.5rem;">Explore Modalities</a>
+                    </article>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-content">
+            <div class="footer-brand">
+                <img src="assets/soft_turtle_logo.png" alt="Footer Logo" class="footer-logo">
+                <p>TV Repairs Health Coaching</p>
+            </div>
+            <div class="footer-links" style="margin-top: 1rem; margin-bottom: 1rem; display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap;">
+                <a href="index.html" style="color: white; text-decoration: underline; font-size: 0.9rem;">Home</a>
+                <a href="scope-of-practice.html" style="color: white; text-decoration: underline; font-size: 0.9rem;">Scope of Practice</a>
+                <a href="healing-modalities.html" style="color: white; text-decoration: underline; font-size: 0.9rem;">Healing Modalities</a>
+                <a href="referral-directory.html" style="color: white; text-decoration: underline; font-size: 0.9rem;">Referral Directory</a>
+                <a href="https://www.linkedin.com/in/tom-vance-06584116/?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3BsKXPUxMFS1q%2FR0RGr6CwKg%3D%3D" target="_blank" style="color: white; text-decoration: underline; font-size: 0.9rem;">Connect on LinkedIn</a>
+            </div>
+            <p>&copy; <span id="year">2026</span> Comrade Tom. Beautifully accessible.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Menu Toggle
+        document.getElementById('menu-toggle').addEventListener('click', function() {
+            const menu = document.getElementById('dropdown-menu');
+            const isExpanded = this.getAttribute('aria-expanded') === 'true';
+            
+            this.setAttribute('aria-expanded', !isExpanded);
+            menu.classList.toggle('show');
+        });
+
+        // Close menu if clicking outside
+        document.addEventListener('click', function(event) {
+            const nav = document.querySelector('.main-nav');
+            const menuToggle = document.getElementById('menu-toggle');
+            const dropdownMenu = document.getElementById('dropdown-menu');
+            
+            if (nav && dropdownMenu && !nav.contains(event.target) && dropdownMenu.classList.contains('show')) {
+                dropdownMenu.classList.remove('show');
+                menuToggle.setAttribute('aria-expanded', 'false');
+            }
+        });
+
+        // Tab Switching Logic
+        const tabBtns = document.querySelectorAll('.dir-tab-btn');
+        const panels = document.querySelectorAll('.directory-panel');
+        const filterSets = document.querySelectorAll('.filter-pills');
+        const searchInput = document.getElementById('dir-search');
+
+        let activeTab = 'organizations'; // 'organizations', 'individuals', or 'community'
+        let activeFilters = {
+            organizations: 'all',
+            individuals: 'all',
+            community: 'all'
+        };
+        let searchQuery = '';
+
+        tabBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                const targetPanelId = this.getAttribute('aria-controls');
+                
+                // Switch Tab active class
+                tabBtns.forEach(b => {
+                    b.classList.remove('active');
+                    b.setAttribute('aria-selected', 'false');
+                });
+                this.classList.add('active');
+                this.setAttribute('aria-selected', 'true');
+
+                // Switch Panel active class
+                panels.forEach(p => p.classList.remove('active'));
+                const targetPanel = document.getElementById(targetPanelId);
+                targetPanel.classList.add('active');
+
+                // Switch Filter Pills active class
+                filterSets.forEach(fs => fs.style.display = 'none');
+                
+                activeTab = targetPanelId.replace('panel-', '');
+                const targetFilterSet = document.getElementById('pills-' + activeTab);
+                targetFilterSet.style.display = 'flex';
+
+                // Reset search and apply filters
+                searchInput.value = '';
+                searchQuery = '';
+                
+                // Reset this tab's filter pill to "All"
+                const activeTabPills = targetFilterSet.querySelectorAll('.filter-pill');
+                activeTabPills.forEach(p => p.classList.remove('active'));
+                targetFilterSet.querySelector('.filter-pill[data-filter="all"]').classList.add('active');
+                activeFilters[activeTab] = 'all';
+
+                filterDirectory();
+            });
+        });
+
+        // Search & Filter Execution
+        function filterDirectory() {
+            const currentPanel = document.getElementById('panel-' + activeTab);
+            const currentCards = currentPanel.querySelectorAll('.directory-card');
+            const currentFilter = activeFilters[activeTab];
+            const noResultsElement = document.getElementById('no-results-msg');
+
+            let visibleCount = 0;
+            
+            currentCards.forEach(card => {
+                const tags = card.getAttribute('data-tags') || '';
+                const title = card.querySelector('h4').textContent.toLowerCase();
+                const description = card.querySelector('p').textContent.toLowerCase();
+                const badges = Array.from(card.querySelectorAll('.directory-badge'))
+                                    .map(badge => badge.textContent.toLowerCase());
+                
+                const searchMatch = title.includes(searchQuery) || 
+                                    description.includes(searchQuery) || 
+                                    badges.some(badge => badge.includes(searchQuery));
+                                    
+                const tagMatch = (currentFilter === 'all') || tags.includes(currentFilter);
+                
+                if (searchMatch && tagMatch) {
+                    card.style.display = 'flex';
+                    visibleCount++;
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+
+            if (visibleCount === 0) {
+                noResultsElement.style.display = 'block';
+            } else {
+                noResultsElement.style.display = 'none';
+            }
+        }
+
+        // Search Input Listener
+        searchInput.addEventListener('input', function(e) {
+            searchQuery = e.target.value.toLowerCase().trim();
+            filterDirectory();
+        });
+
+        // Filter Pills Click Listener (Delegated for all pill sets)
+        document.querySelectorAll('.filter-pill').forEach(pill => {
+            pill.addEventListener('click', function() {
+                const pillContainer = this.parentElement;
+                const siblingPills = pillContainer.querySelectorAll('.filter-pill');
+                
+                siblingPills.forEach(p => p.classList.remove('active'));
+                this.classList.add('active');
+                
+                activeFilters[activeTab] = this.getAttribute('data-filter');
+                filterDirectory();
+            });
+        });
+
+        // Clear Filters Action
+        document.getElementById('clear-filters-btn').addEventListener('click', function() {
+            searchInput.value = '';
+            searchQuery = '';
+            
+            const currentFilterSet = document.getElementById('pills-' + activeTab);
+            const siblingPills = currentFilterSet.querySelectorAll('.filter-pill');
+            
+            siblingPills.forEach(p => p.classList.remove('active'));
+            currentFilterSet.querySelector('.filter-pill[data-filter="all"]').classList.add('active');
+            
+            activeFilters[activeTab] = 'all';
+            filterDirectory();
+        });
+    </script>
+</body>
+</html>
