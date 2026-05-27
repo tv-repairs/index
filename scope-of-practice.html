@@ -224,39 +224,121 @@
                 <a href="tel:988" class="crisis-action-btn btn-call">Call 988</a>
                 <a href="sms:988" class="crisis-action-btn btn-text">Text 988</a>
             </div>
+            <button class="crisis-widget-hide-btn" aria-label="Hide this widget permanently">Hide this widget permanently</button>
         </div>
     </div>
 
     <script>
-        // Crisis Widget Toggle for Mobile/Accessibility
-        const widgetContainer = document.getElementById('crisis-widget');
-        const widgetTrigger = widgetContainer.querySelector('.crisis-widget-trigger');
-        const widgetClose = widgetContainer.querySelector('.crisis-widget-close');
+        (function() {
+            const widgetContainer = document.getElementById('crisis-widget');
+            if (!widgetContainer) return;
 
-        widgetTrigger.addEventListener('click', function(e) {
-            e.stopPropagation();
-            const isActive = widgetContainer.classList.contains('active');
-            if (isActive) {
+            // Check localStorage on load
+            if (localStorage.getItem('hide-crisis-widget') === 'true') {
+                widgetContainer.style.display = 'none';
+                return;
+            }
+
+            const widgetTrigger = widgetContainer.querySelector('.crisis-widget-trigger');
+            const widgetClose = widgetContainer.querySelector('.crisis-widget-close');
+            const hideBtn = widgetContainer.querySelector('.crisis-widget-hide-btn');
+
+            let dragStarted = false;
+            let isDragging = false;
+            let startX, startY;
+            let initialLeft, initialTop;
+
+            // Drag support for desktop
+            widgetTrigger.addEventListener('mousedown', function(e) {
+                if (e.button !== 0) return; // Left click only
+                
+                dragStarted = true;
+                isDragging = false;
+                startX = e.clientX;
+                startY = e.clientY;
+                
+                const rect = widgetContainer.getBoundingClientRect();
+                initialLeft = rect.left;
+                initialTop = rect.top;
+            });
+
+            document.addEventListener('mousemove', function(e) {
+                if (!dragStarted) return;
+                
+                const dx = e.clientX - startX;
+                const dy = e.clientY - startY;
+                
+                if (Math.abs(dx) > 5 || Math.abs(dy) > 5) {
+                    isDragging = true;
+                    widgetContainer.classList.add('dragging');
+                    
+                    widgetContainer.style.bottom = 'auto';
+                    widgetContainer.style.right = 'auto';
+                    
+                    let newLeft = initialLeft + dx;
+                    let newTop = initialTop + dy;
+                    
+                    const pad = 10;
+                    const widgetWidth = widgetContainer.offsetWidth;
+                    const widgetHeight = widgetContainer.offsetHeight;
+                    
+                    newLeft = Math.max(pad, Math.min(newLeft, window.innerWidth - widgetWidth - pad));
+                    newTop = Math.max(pad, Math.min(newTop, window.innerHeight - widgetHeight - pad));
+                    
+                    widgetContainer.style.left = newLeft + 'px';
+                    widgetContainer.style.top = newTop + 'px';
+                }
+            });
+
+            document.addEventListener('mouseup', function() {
+                if (dragStarted) {
+                    dragStarted = false;
+                    setTimeout(() => {
+                        widgetContainer.classList.remove('dragging');
+                    }, 50);
+                }
+            });
+
+            // Toggle Card Visibility (Avoid trigger on drag release)
+            widgetTrigger.addEventListener('click', function(e) {
+                e.stopPropagation();
+                if (isDragging) {
+                    isDragging = false;
+                    return;
+                }
+                const isActive = widgetContainer.classList.contains('active');
+                if (isActive) {
+                    widgetContainer.classList.remove('active');
+                    widgetTrigger.setAttribute('aria-expanded', 'false');
+                } else {
+                    widgetContainer.classList.add('active');
+                    widgetTrigger.setAttribute('aria-expanded', 'true');
+                }
+            });
+
+            // Close actions
+            widgetClose.addEventListener('click', function(e) {
+                e.stopPropagation();
                 widgetContainer.classList.remove('active');
                 widgetTrigger.setAttribute('aria-expanded', 'false');
-            } else {
-                widgetContainer.classList.add('active');
-                widgetTrigger.setAttribute('aria-expanded', 'true');
-            }
-        });
+            });
 
-        widgetClose.addEventListener('click', function(e) {
-            e.stopPropagation();
-            widgetContainer.classList.remove('active');
-            widgetTrigger.setAttribute('aria-expanded', 'false');
-        });
+            document.addEventListener('click', function(event) {
+                if (!widgetContainer.contains(event.target)) {
+                    widgetContainer.classList.remove('active');
+                    widgetTrigger.setAttribute('aria-expanded', 'false');
+                }
+            });
 
-        document.addEventListener('click', function(event) {
-            if (!widgetContainer.contains(event.target)) {
-                widgetContainer.classList.remove('active');
-                widgetTrigger.setAttribute('aria-expanded', 'false');
-            }
-        });
+            // Hide Widget Permanently
+            hideBtn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                if (confirm("Would you like to hide this urgent support shortcut? You can still find the 988 lifeline and other resources in our Minnesota Clinical Referral Directory at any time.")) {
+                    localStorage.setItem('hide-crisis-widget', 'true');
+                    widgetContainer.style.display = 'none';
+                }
+            });
+        })();
     </script>
 </body>
 </html>

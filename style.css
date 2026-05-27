@@ -387,13 +387,29 @@ a:hover, a:focus { color: var(--color-red-accent); text-decoration: underline; }
     }
 }
 
-/* --- Floating Crisis Support Widget --- */
 .crisis-widget-container {
     position: fixed;
     bottom: 2rem;
     right: 2rem;
     z-index: 9999;
     font-family: 'Outfit', sans-serif;
+    transition: none; /* Crucial so that dragging doesn't feel laggy */
+}
+
+.crisis-widget-container.dragging {
+    opacity: 0.95;
+    user-select: none;
+}
+
+.crisis-widget-container.dragging .crisis-widget-trigger {
+    cursor: grabbing;
+    transform: scale(1.02);
+    box-shadow: 0 8px 25px rgba(176, 58, 46, 0.4);
+}
+
+.crisis-widget-container.dragging .crisis-widget-card {
+    opacity: 0 !important;
+    pointer-events: none !important;
 }
 
 .crisis-widget-trigger {
@@ -407,7 +423,7 @@ a:hover, a:focus { color: var(--color-red-accent); text-decoration: underline; }
     border-radius: 50px;
     font-weight: 600;
     font-size: 0.95rem;
-    cursor: pointer;
+    cursor: grab;
     box-shadow: 0 4px 15px rgba(176, 58, 46, 0.35);
     transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), background-color 0.3s ease, box-shadow 0.3s ease;
 }
@@ -556,3 +572,23 @@ a:hover, a:focus { color: var(--color-red-accent); text-decoration: underline; }
         width: auto;
     }
 }
+
+.crisis-widget-hide-btn {
+    display: block;
+    width: 100%;
+    text-align: center;
+    background: none;
+    border: none;
+    color: #888;
+    font-size: 0.75rem;
+    text-decoration: underline;
+    margin-top: 0.8rem;
+    cursor: pointer;
+    font-family: 'Outfit', sans-serif;
+    transition: color 0.2s ease;
+}
+
+.crisis-widget-hide-btn:hover {
+    color: var(--color-red-accent);
+}
+
