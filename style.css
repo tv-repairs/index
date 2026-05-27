@@ -386,3 +386,173 @@ a:hover, a:focus { color: var(--color-red-accent); text-decoration: underline; }
         margin-bottom: 1rem;
     }
 }
+
+/* --- Floating Crisis Support Widget --- */
+.crisis-widget-container {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    z-index: 9999;
+    font-family: 'Outfit', sans-serif;
+}
+
+.crisis-widget-trigger {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background-color: var(--color-red-accent);
+    color: white;
+    border: none;
+    padding: 0.8rem 1.4rem;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(176, 58, 46, 0.35);
+    transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.crisis-widget-trigger:hover, .crisis-widget-trigger:focus {
+    transform: scale(1.05);
+    background-color: #922B21; /* Slightly darker crimson */
+    box-shadow: 0 6px 20px rgba(176, 58, 46, 0.45);
+}
+
+/* Pulse Animation */
+.pulse-dot {
+    width: 10px;
+    height: 10px;
+    background-color: white;
+    border-radius: 50%;
+    position: relative;
+}
+
+.pulse-dot::after {
+    content: '';
+    position: absolute;
+    top: -5px; left: -5px; right: -5px; bottom: -5px;
+    border: 2px solid white;
+    border-radius: 50%;
+    animation: widget-pulse 1.8s infinite ease-in-out;
+}
+
+@keyframes widget-pulse {
+    0% { transform: scale(0.8); opacity: 0.8; }
+    50% { transform: scale(1.6); opacity: 0; }
+    100% { transform: scale(0.8); opacity: 0; }
+}
+
+.crisis-widget-card {
+    position: absolute;
+    bottom: calc(100% + 15px);
+    right: 0;
+    width: 320px;
+    background: white;
+    border-radius: 20px;
+    padding: 1.5rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    border: 1px solid rgba(176, 58, 46, 0.15);
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(15px);
+    transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), opacity 0.3s ease;
+}
+
+/* Hover-to-reveal on desktop */
+.crisis-widget-container:hover .crisis-widget-card,
+.crisis-widget-container:focus-within .crisis-widget-card,
+.crisis-widget-container.active .crisis-widget-card {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+}
+
+.crisis-widget-close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: #999;
+    cursor: pointer;
+    line-height: 1;
+    padding: 0;
+    transition: color 0.2s ease;
+}
+
+.crisis-widget-close:hover {
+    color: var(--color-text-main);
+}
+
+.crisis-title {
+    margin: 0 0 0.5rem 0;
+    color: var(--color-green-dark);
+    font-size: 1.15rem;
+    font-weight: 600;
+    padding-right: 20px; /* Leave room for close button */
+}
+
+.crisis-desc {
+    margin: 0 0 1.2rem 0;
+    font-size: 0.88rem;
+    line-height: 1.5;
+    color: var(--color-text-main);
+}
+
+.crisis-actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+.crisis-action-btn {
+    display: block;
+    text-align: center;
+    padding: 0.6rem 0.5rem;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-decoration: none;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.crisis-action-btn:active {
+    transform: scale(0.98);
+}
+
+.btn-call {
+    background-color: var(--color-green-dark);
+    color: white;
+}
+
+.btn-call:hover {
+    background-color: var(--color-green-med);
+}
+
+.btn-text {
+    background-color: var(--color-bg-light);
+    color: var(--color-green-dark);
+    border: 1px solid var(--color-green-light);
+}
+
+.btn-text:hover {
+    background-color: var(--color-green-light);
+}
+
+@media (max-width: 480px) {
+    .crisis-widget-container {
+        bottom: 1.5rem;
+        right: 1.5rem;
+        left: 1.5rem;
+    }
+    .crisis-widget-trigger {
+        width: 100%;
+        justify-content: center;
+    }
+    .crisis-widget-card {
+        right: 0;
+        left: 0;
+        width: auto;
+    }
+}

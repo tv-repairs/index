@@ -342,7 +342,55 @@
                 }
             }
         });
+    </script>
 
+    <!-- Floating Crisis Support Widget -->
+    <div class="crisis-widget-container" id="crisis-widget">
+        <button class="crisis-widget-trigger" aria-label="Show emergency support details" aria-expanded="false" aria-controls="crisis-widget-card">
+            <span class="pulse-dot"></span>
+            <span class="trigger-text">Urgent Support: 988</span>
+        </button>
+        <div class="crisis-widget-card" id="crisis-widget-card" role="region" aria-label="Suicide & Crisis Lifeline information">
+            <button class="crisis-widget-close" aria-label="Close crisis information">&times;</button>
+            <h4 class="crisis-title">Suicide & Crisis Lifeline</h4>
+            <p class="crisis-desc">Free, confidential, 24/7 clinical mental health support. Available via call or text.</p>
+            <div class="crisis-actions">
+                <a href="tel:988" class="crisis-action-btn btn-call">Call 988</a>
+                <a href="sms:988" class="crisis-action-btn btn-text">Text 988</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Crisis Widget Toggle for Mobile/Accessibility
+        const widgetContainer = document.getElementById('crisis-widget');
+        const widgetTrigger = widgetContainer.querySelector('.crisis-widget-trigger');
+        const widgetClose = widgetContainer.querySelector('.crisis-widget-close');
+
+        widgetTrigger.addEventListener('click', function(e) {
+            e.stopPropagation();
+            const isActive = widgetContainer.classList.contains('active');
+            if (isActive) {
+                widgetContainer.classList.remove('active');
+                widgetTrigger.setAttribute('aria-expanded', 'false');
+            } else {
+                widgetContainer.classList.add('active');
+                widgetTrigger.setAttribute('aria-expanded', 'true');
+            }
+        });
+
+        widgetClose.addEventListener('click', function(e) {
+            e.stopPropagation();
+            widgetContainer.classList.remove('active');
+            widgetTrigger.setAttribute('aria-expanded', 'false');
+        });
+
+        document.addEventListener('click', function(event) {
+            if (!widgetContainer.contains(event.target)) {
+                widgetContainer.classList.remove('active');
+                widgetTrigger.setAttribute('aria-expanded', 'false');
+            }
+        });
     </script>
 </body>
 </html>
