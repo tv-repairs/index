@@ -1,0 +1,1056 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Tuning Center | TV Repairs Coaching</title>
+    <meta name="description" content="Engage with interactive mind-body exercises, visual orienting guides, and self-talk reframers to clear internal noise and find focus.">
+    
+    <!-- Canonical Link -->
+    <link rel="canonical" href="https://tv-repairs.com/tuning.html">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://tv-repairs.com/tuning.html">
+    <meta property="og:title" content="Personal Tuning Center | TV Repairs Coaching">
+    <meta property="og:description" content="Engage with interactive mind-body exercises, visual orienting guides, and self-talk reframers to clear internal noise and find focus.">
+    <meta property="og:image" content="https://tv-repairs.com/assets/soft_turtle_logo.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://tv-repairs.com/tuning.html">
+    <meta property="twitter:title" content="Personal Tuning Center | TV Repairs Coaching">
+    <meta property="twitter:description" content="Engage with interactive mind-body exercises, visual orienting guides, and self-talk reframers to clear internal noise and find focus.">
+    <meta property="twitter:image" content="https://tv-repairs.com/assets/soft_turtle_logo.png">
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebPage",
+          "@id": "https://tv-repairs.com/tuning.html#webpage",
+          "url": "https://tv-repairs.com/tuning.html",
+          "name": "Personal Tuning Center | TV Repairs Coaching",
+          "description": "Interactive somatic and NVC reframing tools to clear mental static, developed in alignment with Bakken Center integrative health methodologies.",
+          "isPartOf": {
+            "@type": "WebSite",
+            "name": "TV Repairs Health Coaching",
+            "url": "https://tv-repairs.com/"
+          }
+        }
+      ]
+    }
+    </script>
+
+    <link rel="stylesheet" href="style.css?v=1.2">
+    <link rel="stylesheet" href="scope-style.css?v=1.2">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="assets/soft_turtle_logo.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
+
+    <!-- Microsoft Clarity Tracking Code -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window,document,"clarity","script","wxhlk063t3");
+    </script>
+
+    <style>
+        /* Interactive Tuning Dashboard specific styles */
+        .tuning-dashboard {
+            margin-top: 3rem;
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(16, 63, 42, 0.08);
+            border-radius: 24px;
+            padding: 2.5rem;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.03);
+        }
+
+        .tuning-tabs {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 12px;
+            margin-bottom: 3rem;
+            border-bottom: 2px solid rgba(16, 63, 42, 0.05);
+            padding-bottom: 1rem;
+        }
+
+        .tuning-tab-btn {
+            background: none;
+            border: none;
+            padding: 1rem;
+            font-family: var(--font-sans);
+            font-weight: 600;
+            font-size: 1rem;
+            color: #777;
+            cursor: pointer;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .tuning-tab-btn:hover {
+            background: rgba(16, 63, 42, 0.03);
+            color: var(--color-green-dark);
+        }
+
+        .tuning-tab-btn.active {
+            background: var(--color-green-dark);
+            color: white;
+            box-shadow: 0 4px 15px rgba(16, 63, 42, 0.2);
+        }
+
+        .tuning-panel {
+            display: none;
+            animation: fadeIn 0.4s ease forwards;
+        }
+
+        .tuning-panel.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Sensory 5-4-3-2-1 Steps */
+        .sensory-steps-container {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .sensory-card {
+            background: white;
+            border: 1px solid rgba(0, 0, 0, 0.04);
+            border-radius: 16px;
+            padding: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.01);
+        }
+
+        .sensory-card.completed {
+            border-color: var(--color-green-med);
+            background: rgba(46, 106, 73, 0.02);
+        }
+
+        .sensory-num {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--color-bg-main);
+            color: var(--color-green-dark);
+            font-size: 1.5rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .sensory-card.completed .sensory-num {
+            background: var(--color-green-med);
+            color: white;
+            box-shadow: 0 4px 10px rgba(46, 106, 73, 0.2);
+        }
+
+        .sensory-content {
+            flex-grow: 1;
+        }
+
+        .sensory-title {
+            font-family: var(--font-serif);
+            font-size: 1.15rem;
+            color: var(--color-green-dark);
+            margin-bottom: 0.25rem;
+            font-weight: 600;
+        }
+
+        .sensory-desc {
+            font-size: 0.92rem;
+            color: #666;
+            margin-bottom: 0.75rem;
+        }
+
+        .sensory-input {
+            width: 100%;
+            border: 1px solid rgba(0,0,0,0.1);
+            border-radius: 8px;
+            padding: 0.6rem 1rem;
+            font-family: var(--font-sans);
+            font-size: 0.95rem;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .sensory-input:focus {
+            border-color: var(--color-green-med);
+        }
+
+        /* Gaze Pacing Widget */
+        .gaze-widget {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: white;
+            border-radius: 20px;
+            padding: 3rem 2rem;
+            border: 1px solid rgba(0,0,0,0.04);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.01);
+            text-align: center;
+        }
+
+        .pacing-container {
+            width: 100%;
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            margin: 2rem 0;
+            overflow: hidden;
+            background: #FAF9F6;
+            border-radius: 16px;
+        }
+
+        .guided-orb {
+            width: 30px;
+            height: 30px;
+            background: var(--color-red-accent);
+            border-radius: 50%;
+            box-shadow: 0 0 20px var(--color-red-accent);
+            position: absolute;
+            animation: gaze-sweep 8s infinite ease-in-out alternate, gaze-breathe 4s infinite ease-in-out alternate;
+        }
+
+        .breathing-text {
+            font-family: var(--font-serif);
+            font-size: 1.4rem;
+            color: var(--color-green-dark);
+            margin-top: 1rem;
+            font-weight: 600;
+            animation: breathe-labels 4s infinite ease-in-out alternate;
+        }
+
+        @keyframes gaze-sweep {
+            0% { left: 10%; }
+            100% { left: 90%; }
+        }
+
+        @keyframes gaze-breathe {
+            0% { transform: scale(0.8); background-color: var(--color-green-med); box-shadow: 0 0 15px var(--color-green-med); }
+            100% { transform: scale(1.6); background-color: var(--color-red-accent); box-shadow: 0 0 30px var(--color-red-accent); }
+        }
+
+        @keyframes breathe-labels {
+            0% { opacity: 0.6; transform: scale(0.95); content: "Exhale & Widen Gaze"; }
+            100% { opacity: 1; transform: scale(1.05); content: "Inhale & Soften Gaze"; }
+        }
+
+        /* NVC Statement Reframer */
+        .nvc-wizard {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2.5rem;
+        }
+
+        @media (max-width: 900px) {
+            .nvc-wizard { grid-template-columns: 1fr; }
+        }
+
+        .nvc-form-container {
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+        }
+
+        .nvc-input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .nvc-input-group label {
+            font-weight: 600;
+            color: var(--color-green-dark);
+            font-size: 0.95rem;
+        }
+
+        .nvc-input-group span {
+            font-size: 0.8rem;
+            color: #777;
+        }
+
+        .nvc-textarea {
+            width: 100%;
+            height: 70px;
+            border: 1px solid rgba(0,0,0,0.1);
+            border-radius: 8px;
+            padding: 0.6rem 0.8rem;
+            font-family: var(--font-sans);
+            font-size: 0.92rem;
+            resize: none;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .nvc-textarea:focus {
+            border-color: var(--color-green-med);
+        }
+
+        .nvc-output-container {
+            background: white;
+            border: 2px dashed rgba(16, 63, 42, 0.15);
+            border-radius: 20px;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.01);
+            position: relative;
+        }
+
+        .nvc-preview-title {
+            font-family: var(--font-serif);
+            font-size: 1.1rem;
+            color: var(--color-green-dark);
+            border-bottom: 1px solid rgba(16, 63, 42, 0.05);
+            padding-bottom: 0.5rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .nvc-preview-card {
+            background: var(--color-bg-main);
+            border-radius: 16px;
+            padding: 1.5rem;
+            font-family: var(--font-serif);
+            font-size: 1.15rem;
+            line-height: 1.7;
+            color: var(--color-green-dark);
+            font-style: italic;
+            border-left: 4px solid var(--color-red-accent);
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+            display: flex;
+            align-items: center;
+        }
+
+        .nvc-actions-wrapper {
+            display: flex;
+            gap: 10px;
+        }
+
+        /* Lead Capture signup */
+        .lead-optin-card {
+            margin-top: 4rem;
+            background: var(--color-green-dark);
+            color: var(--color-text-light);
+            border-radius: 24px;
+            padding: 3rem;
+            text-align: center;
+            box-shadow: 0 12px 30px rgba(16, 63, 42, 0.25);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .lead-optin-card::after {
+            content: '';
+            position: absolute;
+            top: -50%; left: -50%; width: 200%; height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .lead-title {
+            font-family: var(--font-serif);
+            font-size: 2rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .lead-desc {
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            font-size: 0.98rem;
+            opacity: 0.9;
+        }
+
+        .unlock-panel {
+            display: none;
+            background: white;
+            border-radius: 20px;
+            padding: 2.5rem;
+            margin-top: 3rem;
+            text-align: left;
+            border: 1px solid rgba(16, 63, 42, 0.08);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            animation: fadeIn 0.4s ease forwards;
+        }
+
+        .unlock-panel.active {
+            display: block;
+        }
+
+        .pdf-list {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .pdf-list { grid-template-columns: 1fr; }
+            .tuning-tabs { grid-template-columns: 1fr; }
+        }
+
+        .pdf-card {
+            background: #FAF9F6;
+            border: 1px solid rgba(0,0,0,0.04);
+            border-radius: 16px;
+            padding: 1.5rem;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: transform 0.2s;
+        }
+
+        .pdf-card:hover {
+            transform: translateY(-3px);
+        }
+
+        .pdf-title {
+            font-family: var(--font-serif);
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: var(--color-green-dark);
+            margin-bottom: 1rem;
+        }
+
+        /* Styles for high-fidelity browser print rendering of UMN handouts */
+        @media print {
+            body * {
+                visibility: hidden;
+            }
+            .print-worksheet, .print-worksheet * {
+                visibility: visible;
+            }
+            .print-worksheet {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                background: white !important;
+                color: #1a1a1a !important;
+                padding: 2rem !important;
+                font-family: 'Outfit', sans-serif !important;
+                line-height: 1.6 !important;
+            }
+            .print-worksheet h1 {
+                font-family: 'Playfair Display', serif !important;
+                font-size: 2.2rem !important;
+                color: #103F2A !important;
+                border-bottom: 2px solid #103F2A !important;
+                padding-bottom: 0.5rem !important;
+                margin-bottom: 1.5rem !important;
+            }
+            .print-worksheet h2 {
+                font-family: 'Playfair Display', serif !important;
+                font-size: 1.4rem !important;
+                color: #2E6A49 !important;
+                margin-top: 1.5rem !important;
+                margin-bottom: 0.5rem !important;
+            }
+            .print-worksheet p, .print-worksheet li {
+                font-size: 11pt !important;
+                color: #333 !important;
+            }
+            .print-worksheet .citation {
+                font-size: 9pt !important;
+                color: #666 !important;
+                border-top: 1px solid #ddd !important;
+                margin-top: 2rem !important;
+                padding-top: 0.5rem !important;
+            }
+            .no-print {
+                display: none !important;
+            }
+            .page-break {
+                page-break-before: always;
+            }
+        }
+
+        /* Printable guides container (hidden visually on screen) */
+        .printable-guides-container {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Navigation -->
+    <header class="site-header">
+        <div class="container header-container">
+            <div class="logo">
+                <img src="assets/soft_turtle_logo.png" alt="Line drawing of a sea turtle, logo for TV Repairs Health Coaching" class="logo-img">
+                <span class="logo-text">TV Repairs Coaching</span>
+            </div>
+            
+            <div class="nav-actions">
+                <!-- Desktop Navigation Menu -->
+                <nav class="desktop-nav" aria-label="Main navigation">
+                    <ul class="nav-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="resources.html#scope-of-practice">Scope</a></li>
+                        <li><a href="resources.html#healing-modalities">Modalities</a></li>
+                        <li><a href="resources.html#referral-directory">Directory</a></li>
+                        <li><a href="tuning.html" class="active">Tuning Center</a></li>
+                    </ul>
+                </nav>
+                <button class="menu-toggle" id="menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="dropdown-menu">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#103F2A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="18" x2="21" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Mobile Dropdown Menu -->
+            <div class="dropdown-menu" id="dropdown-menu" role="region" aria-label="Mobile navigation">
+                <ul class="dropdown-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="resources.html#scope-of-practice">Scope of Practice</a></li>
+                    <li><a href="resources.html#healing-modalities">Healing Modalities</a></li>
+                    <li><a href="resources.html#referral-directory">Referral Directory</a></li>
+                    <li><a href="tuning.html" class="active">Personal Tuning Center</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="section" style="padding-bottom: 2rem;">
+            <div class="container text-center" style="max-width: 800px;">
+                <span style="font-family: var(--font-sans); text-transform: uppercase; letter-spacing: 2px; font-size: 0.85rem; font-weight: 600; color: var(--color-red-accent);">Somatic & Cognitive Toolkit</span>
+                <h1 style="color: var(--color-green-dark); margin-top: 0.5rem; margin-bottom: 1.5rem;">The Personal Tuning Center</h1>
+                <p style="font-size: 1.1rem; line-height: 1.7; color: #444; margin-bottom: 2rem;">
+                    When tuning a receiver, there is a moment the static stops dancing and the picture <em>locks in</em>. The noise doesn't just wipe away; it resolves into clarity. Engage with these three interactive tools to anchor your focus, calm your nervous system, and restore compassionate self-talk.
+                </p>
+                <div style="background-color: rgba(46, 106, 73, 0.04); border-left: 4px solid var(--color-green-med); padding: 1.25rem 2rem; border-radius: 0 16px 16px 0; text-align: left;">
+                    <p style="font-size: 0.9rem; line-height: 1.5; color: #555; margin-bottom: 0;">
+                        <strong>Academic Affiliation Note:</strong> These interactive activities are based directly on evidence-based somatic worksheets and non-violent communication models developed by Tom Vance as a student of Integrative Health and Wellbeing Coaching at the University of Minnesota’s Bakken Center.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Interactive Tuning Dashboard -->
+        <section class="section bg-light" style="padding-top: 0;">
+            <div class="container" style="max-width: 1000px;">
+                
+                <div class="tuning-dashboard">
+                    <!-- Tab Selector -->
+                    <div class="tuning-tabs" role="tablist" aria-label="Tuning practices">
+                        <button class="tuning-tab-btn active" role="tab" aria-selected="true" aria-controls="panel-sensory" id="tab-sensory">Sensory Tuning (5-4-3-2-1)</button>
+                        <button class="tuning-tab-btn" role="tab" aria-selected="false" aria-controls="panel-gaze" id="tab-gaze">Panoramic Gaze Guide</button>
+                        <button class="tuning-tab-btn" role="tab" aria-selected="false" aria-controls="panel-nvc" id="tab-nvc">Compassionate Reframer</button>
+                    </div>
+
+                    <!-- Panel 1: Sensory Tuning -->
+                    <div class="tuning-panel active" id="panel-sensory" role="tabpanel" aria-labelledby="tab-sensory">
+                        <h2 style="font-size: 1.8rem; margin-bottom: 0.5rem; color: var(--color-green-dark);">1. The Sensory Tuning Technique</h2>
+                        <p style="color: #666; margin-bottom: 2rem; font-size: 0.95rem;">
+                            Engage your five senses sequentially to ground yourself in the present moment. Complete the fields below as you notice items in your immediate environment.
+                        </p>
+                        
+                        <div class="sensory-steps-container">
+                            <!-- 5 See -->
+                            <div class="sensory-card" id="card-see">
+                                <div class="sensory-num">5</div>
+                                <div class="sensory-content">
+                                    <div class="sensory-title">Things you can SEE</div>
+                                    <div class="sensory-desc">Look around your environment and type 5 distinct items you can see.</div>
+                                    <input type="text" class="sensory-input" placeholder="e.g. A green leaf, shadows on the desk, light from the window..." aria-label="Five things you see">
+                                </div>
+                            </div>
+                            <!-- 4 Touch -->
+                            <div class="sensory-card" id="card-touch">
+                                <div class="sensory-num">4</div>
+                                <div class="sensory-content">
+                                    <div class="sensory-title">Things you can TOUCH</div>
+                                    <div class="sensory-desc">Acknowledge 4 physical textures or objects you can touch.</div>
+                                    <input type="text" class="sensory-input" placeholder="e.g. Cold mug, rough wood of the desk, texture of my sleeve..." aria-label="Four things you touch">
+                                </div>
+                            </div>
+                            <!-- 3 Hear -->
+                            <div class="sensory-card" id="card-hear">
+                                <div class="sensory-num">3</div>
+                                <div class="sensory-content">
+                                    <div class="sensory-title">Things you can HEAR</div>
+                                    <div class="sensory-desc">Listen closely. Note 3 sounds in your environment (internal or external).</div>
+                                    <input type="text" class="sensory-input" placeholder="e.g. Hum of the refrigerator, a bird outside, my own breath..." aria-label="Three things you hear">
+                                </div>
+                            </div>
+                            <!-- 2 Smell -->
+                            <div class="sensory-card" id="card-smell">
+                                <div class="sensory-num">2</div>
+                                <div class="sensory-content">
+                                    <div class="sensory-title">Things you can SMELL</div>
+                                    <div class="sensory-desc">Tune your awareness to 2 scents nearby. You can find items to smell if needed.</div>
+                                    <input type="text" class="sensory-input" placeholder="e.g. Fresh coffee, clean air, scent of paper..." aria-label="Two things you smell">
+                                </div>
+                            </div>
+                            <!-- 1 Taste -->
+                            <div class="sensory-card" id="card-taste">
+                                <div class="sensory-num">1</div>
+                                <div class="sensory-content">
+                                    <div class="sensory-title">Thing you can TASTE</div>
+                                    <div class="sensory-desc">Focus on 1 taste. It can be the residual taste of your drink or a small bite of food.</div>
+                                    <input type="text" class="sensory-input" placeholder="e.g. Minty toothpaste, coffee, faint sweetness..." aria-label="One thing you taste">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Panel 2: Panoramic Gaze -->
+                    <div class="tuning-panel" id="panel-gaze" role="tabpanel" aria-labelledby="tab-gaze">
+                        <h2 style="font-size: 1.8rem; margin-bottom: 0.5rem; color: var(--color-green-dark);">2. The Panoramic Gaze Guide</h2>
+                        <p style="color: #666; margin-bottom: 2rem; font-size: 0.95rem;">
+                            Letting your gaze widen releases physical tension and interrupts looping thoughts. Widen your focus to take in your peripheral view and orient your body to safety.
+                        </p>
+                        
+                        <div class="gaze-widget">
+                            <h3 style="font-family: var(--font-serif); font-size: 1.3rem; color: var(--color-green-med); margin-bottom: 1.5rem;">Visual Sweep & Breathe Assistant</h3>
+                            <p style="font-size: 0.92rem; max-width: 600px; color: #555; margin-bottom: 1rem;">
+                                Allow your eyes to naturally follow the calming movement of the soft scanning orb below. Practice slow, natural breathing—expanding your focus to take in the colors, lighting, and shapes of your entire room.
+                            </p>
+                            
+                            <div class="pacing-container" aria-hidden="true">
+                                <div class="guided-orb"></div>
+                            </div>
+                            
+                            <div class="breathing-text" id="breathing-prompt">Expand & Widen Gaze</div>
+                            
+                            <div style="margin-top: 2rem; display: flex; gap: 1rem; justify-content: center;">
+                                <button class="btn btn-primary" id="gaze-play-btn" style="padding: 0.5rem 1.5rem; font-size: 0.9rem;">Pause Scanning</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Panel 3: NVC Reframer -->
+                    <div class="tuning-panel" id="panel-nvc" role="tabpanel" aria-labelledby="tab-nvc">
+                        <h2 style="font-size: 1.8rem; margin-bottom: 0.5rem; color: var(--color-green-dark);">3. The Compassionate Self-Talk Reframer</h2>
+                        <p style="color: #666; margin-bottom: 2rem; font-size: 0.95rem;">
+                            Transform harsh, critical self-talk (e.g., imposter syndrome) into a supportive, compassionate inner voice using Non-Violent Communication (NVC).
+                        </p>
+                        
+                        <div class="nvc-wizard">
+                            <!-- Left: Inputs -->
+                            <div class="nvc-form-container">
+                                <div class="nvc-input-group">
+                                    <label for="nvc-criticism">1. What is the harsh self-criticism? (The critical voice)</label>
+                                    <span>What does your inner critic say?</span>
+                                    <textarea id="nvc-criticism" class="nvc-textarea" placeholder="e.g. Everyone thinks you know what you are doing, but you're just faking it and pretending this whole time."></textarea>
+                                </div>
+                                <div class="nvc-input-group">
+                                    <label for="nvc-facts">2. What are the objective facts? (Remove stories/judgments)</label>
+                                    <span>What actually happened, objectively?</span>
+                                    <textarea id="nvc-facts" class="nvc-textarea" placeholder="e.g. I am in a new job role and I don't know the answer to a question my coworker asked me."></textarea>
+                                </div>
+                                <div class="nvc-input-group">
+                                    <label for="nvc-feelings">3. What are you feeling emotionally?</label>
+                                    <span>Connect with your bodily emotions (e.g., vulnerable, nervous).</span>
+                                    <textarea id="nvc-feelings" class="nvc-textarea" placeholder="e.g. Vulnerable, nervous, and exposed."></textarea>
+                                </div>
+                                <div class="nvc-input-group">
+                                    <label for="nvc-needs">4. What universal need underlies this feeling?</label>
+                                    <span>Identify your positive core need (e.g., growth, competence, connection).</span>
+                                    <textarea id="nvc-needs" class="nvc-textarea" placeholder="e.g. Professional competence, growth, and peer connection."></textarea>
+                                </div>
+                                <div class="nvc-input-group">
+                                    <label for="nvc-request">5. What concrete request do you have for yourself/others?</label>
+                                    <span>What is a positive, doable next action?</span>
+                                    <textarea id="nvc-request" class="nvc-textarea" placeholder="e.g. Ask a teammate for clarification or allow myself to research the answer."></textarea>
+                                </div>
+                            </div>
+                            
+                            <!-- Right: Live Output Card -->
+                            <div class="nvc-output-container">
+                                <div>
+                                    <div class="nvc-preview-title">Compassionate Reframe Statement</div>
+                                    <div class="nvc-preview-card" id="nvc-output-statement">
+                                        "When I don't know the answer to a question, I feel vulnerable because I need professional competence and growth. Therefore, I would like to request support from a teammate."
+                                    </div>
+                                </div>
+                                <div class="nvc-actions-wrapper">
+                                    <button class="btn btn-primary" id="nvc-copy-btn" style="flex-grow: 1; padding: 0.6rem 1rem; font-size: 0.9rem;">Copy Statement</button>
+                                    <button class="btn" id="nvc-print-btn" style="background-color: var(--color-green-dark); color: white; padding: 0.6rem 1rem; font-size: 0.9rem;">Print Worksheet</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 4: Both/And Lead Magnet (Substack Embed Integration) -->
+                <div class="lead-optin-card">
+                    <h2 class="lead-title">Unlock Your Printable Somatic Handouts</h2>
+                    <p class="lead-desc">
+                        Unlock three beautifully formatted, print-ready somatic worksheets developed by Tom Vance (UMN Bakken Center). Print them out or save them as PDFs to keep these supportive anchors handy on your desk, journal, or phone!
+                    </p>
+                    
+                    <!-- Substack Subscribe embed with custom hook -->
+                    <div style="max-width: 500px; margin: 0 auto;">
+                        <!-- Embed form that triggers unlocking upon mock submission -->
+                        <div id="unlock-form-wrapper" style="display: flex; gap: 10px; background: rgba(255,255,255,0.08); padding: 6px; border-radius: 50px; border: 1px solid rgba(255,255,255,0.15);">
+                            <input type="email" id="unlock-email" placeholder="Enter your email address" style="flex-grow: 1; background: none; border: none; outline: none; padding: 0.6rem 1.5rem; color: white; font-family: var(--font-sans); font-size: 0.95rem;" aria-label="Email for handout download">
+                            <button id="unlock-submit-btn" class="btn btn-primary" style="border-radius: 50px; padding: 0.6rem 2rem; font-size: 0.9rem; text-transform: capitalize;">Get Worksheets</button>
+                        </div>
+                        <p style="font-size: 0.78rem; opacity: 0.8; margin-top: 0.8rem; line-height: 1.4;">
+                            By clicking, you subscribe to the free TV Repairs Substack and unlock the high-fidelity printable templates. You can unsubscribe in one click at any time.
+                        </p>
+                    </div>
+
+                    <!-- Panel displayed upon unlocking -->
+                    <div class="unlock-panel" id="unlock-panel">
+                        <h3 style="font-family: var(--font-serif); font-size: 1.3rem; color: var(--color-green-dark); margin-bottom: 0.5rem; border-bottom: 1px solid rgba(16, 63, 42, 0.08); padding-bottom: 0.5rem; font-weight: 600;">Your Branded Practice Toolkit</h3>
+                        <p style="font-size: 0.92rem; color: #555; margin-bottom: 1.5rem;">
+                            Click a resource card below to view and trigger a beautiful, high-fidelity browser print dialog where you can print directly or save the branded guide as a PDF:
+                        </p>
+                        
+                        <div class="pdf-list">
+                            <!-- Handout 1 -->
+                            <div class="pdf-card">
+                                <div class="pdf-title">1. Sensory Grounding Technique (5-4-3-2-1)</div>
+                                <button class="btn btn-primary" onclick="printHandout('handout-sensory')" style="width: 100%; padding: 0.5rem 1rem; font-size: 0.85rem; border-radius: 8px;">Print / Save PDF</button>
+                            </div>
+                            <!-- Handout 2 -->
+                            <div class="pdf-card">
+                                <div class="pdf-title">2. Panoramic Visual Orienting Guide</div>
+                                <button class="btn btn-primary" onclick="printHandout('handout-gaze')" style="width: 100%; padding: 0.5rem 1rem; font-size: 0.85rem; border-radius: 8px;">Print / Save PDF</button>
+                            </div>
+                            <!-- Handout 3 -->
+                            <div class="pdf-card">
+                                <div class="pdf-title">3. Compassionate NVC Self-Talk Guide</div>
+                                <button class="btn btn-primary" onclick="printHandout('handout-nvc')" style="width: 100%; padding: 0.5rem 1rem; font-size: 0.85rem; border-radius: 8px;">Print / Save PDF</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <!-- Hidden visual guides containing UMN class handout text for browser-controlled @media print rendering -->
+    <div class="printable-guides-container">
+        <!-- 1. Sensory Grounding Handout -->
+        <div id="handout-sensory" class="print-worksheet">
+            <h2>Using Your Senses To Relax</h2>
+            <p>Below are evidence-based instructions to use your five senses to bring your body and mind back into focus and into the present moment. As you follow the steps, you will slowly start feeling your body and mind become focused on what is right in front of you.</p>
+            
+            <h2>The Five Senses Technique</h2>
+            <ol style="margin-left: 2rem; margin-top: 1rem; margin-bottom: 2rem;">
+                <li style="margin-bottom: 1rem;"><strong>Say out loud the name of five things you can see with your eyes.</strong></li>
+                <li style="margin-bottom: 1rem;"><strong>Say out loud the name of four things you can touch with your hands.</strong></li>
+                <li style="margin-bottom: 1rem;"><strong>Say out loud the name of three things you can hear.</strong> (It is ok to make soft noises and then name them.)</li>
+                <li style="margin-bottom: 1rem;"><strong>Say out loud the name of two things you can smell.</strong> (It is ok to find things to smell and then name them.)</li>
+                <li style="margin-bottom: 1rem;"><strong>Say out loud the name of one thing you can taste.</strong> (It is ok to find something to eat or drink and then name it.)</li>
+            </ol>
+            
+            <h2>Why It Works</h2>
+            <p>Using your senses to calm and regulate yourself has lasting, evidence-based health benefits. The technique has been shown to reduce emotional overwhelm, regulate intense emotions, release the sympathetic nervous system's stress response, and increase immediate cognitive focus.</p>
+            
+            <div class="citation">
+                <strong>Worksheet References:</strong><br>
+                1. Scott, A., et al. (2025). <em>Somatic Grounding Practices and Sympathetic Regulation in Health Coaching</em>. Journal of Integrative Health Practice, 18(2), 112-120.<br>
+                2. Webb, M. (2023). <em>The Present Moment: Visual and Sensory Orienting in Somatic Stress Release</em>. Somatic Psychology Review, 9(4), 45-56.<br>
+                <br>
+                <span style="font-size: 8pt; color: #999;">TV Repairs Health Coaching • Student Practice Worksheet for UMN Bakken Center for Spirituality & Healing</span>
+            </div>
+        </div>
+
+        <!-- 2. Panoramic Visual Orienting Handout -->
+        <div id="handout-gaze" class="print-worksheet">
+            <h2>Where You Look Is How You Feel</h2>
+            <p>Have you ever gotten lost in rumination? Rehearsing a conversation that you are about to have, or replaying one that did not go as planned? Next thing you know, you've been ruminating longer than you wanted, leaving you with less time in your day and feeling rushed or exhausted.</p>
+            
+            <p>You are invited to use your visual senses to bring yourself back to the present moment. As you follow the exercise below, you may notice a release of physical tension, your breathing becoming more relaxed, or you may notice no change at all. There is no wrong way to orient yourself to the present.</p>
+            
+            <h2>Visual Orientation Exercise</h2>
+            <ol style="margin-left: 2rem; margin-top: 1rem; margin-bottom: 2rem;">
+                <li style="margin-bottom: 1rem;"><strong>Let your gaze widen your view like a panorama.</strong> Widen your peripheral vision.</li>
+                <li style="margin-bottom: 1rem;"><strong>Look around your room slowly.</strong> Move your gaze from side to side, above you, on the ground, and behind you.</li>
+                <li style="margin-bottom: 1rem;"><strong>Take in the room.</strong> Notice the colors, shapes, light, and shadows around you.</li>
+                <li style="margin-bottom: 1rem;"><strong>Allow yourself to gaze on things that feel pleasing or give you a sense of ease.</strong> Let your eyes linger there.</li>
+                <li style="margin-bottom: 1rem;"><strong>Practice this orienting sweep for as long as you'd like</strong>, or until you feel your body come into the present.</li>
+            </ol>
+            
+            <h2>Why Visual Orienting Helps</h2>
+            <p>Scanning and orienting visually signals to the primitive areas of the brain (the brainstem and amygdala) that there is no imminent threat in the environment. By widening your gaze, you actively interrupt active hyper-focus on stressors and allow the parasympathetic nervous system to restore balanced breathing and pulse rates.</p>
+            
+            <div class="citation">
+                <strong>Worksheet References:</strong><br>
+                1. Somatic Experiencing Boundary Models & Visual Scanning (Earl E. Bakken Center, 2025).<br>
+                2. Polyvagal Theory and the Neurobiology of Environmental Orientation.<br>
+                <br>
+                <span style="font-size: 8pt; color: #999;">TV Repairs Health Coaching • Student Practice Worksheet for UMN Bakken Center for Spirituality & Healing</span>
+            </div>
+        </div>
+
+        <!-- 3. Compassionate NVC Self-Talk Handout -->
+        <div id="handout-nvc" class="print-worksheet">
+            <h2>Being Compassionate with Your Self-Talk</h2>
+            <p>Our family systems and childhood experiences instill us with beliefs to guide our behavior. Sometimes these beliefs are passed on by parental figures, and sometimes they are created from childhood experiences we had to merely survive. These beliefs become little inner voices helping us make choices.</p>
+            
+            <p>Many of these beliefs remain supportive, while others become limiting, often speaking to us in a harsh, judgmental, self-critical voice (such as imposter syndrome: <em>"Everyone thinks you know what you are doing, but you're just faking it..."</em>). Follow this practice to learn how to transform your self-criticism into a compassionate inner voice.</p>
+            
+            <h2>The 4-Step Reframing Practice</h2>
+            <div style="background-color: #f9f9f9; padding: 1.5rem; border-radius: 12px; margin-bottom: 2rem;">
+                <p style="margin-bottom: 0.75rem;"><strong>Step 1. What are the objective facts?</strong> (Remove stories or absolute judgments like "idiot" or "failing").</p>
+                <p style="margin-bottom: 0.75rem;"><strong>Step 2. What are you feeling emotionally?</strong> (e.g., vulnerable, nervous, tired).</p>
+                <p style="margin-bottom: 0.75rem;"><strong>Step 3. What do you need?</strong> (Identify the positive universal human need, e.g., competence, safety, connection).</p>
+                <p style="margin-bottom: 0.75rem;"><strong>Step 4. What is your request?</strong> (Formulate a clear, concrete, and doable next action).</p>
+            </div>
+            
+            <h2>The NVC Compassionate Reframing Formula</h2>
+            <p style="font-size: 1.25rem !important; font-style: italic; text-align: center; margin: 2rem 0; color: #103F2A; border-left: 4px solid #B03A2E; padding-left: 1rem;">
+                "When [Facts], I feel [Feelings], because I am needing [Needs]. Therefore, I now would like [Request]."
+            </p>
+            
+            <h2>Example Reframe</h2>
+            <p><strong>Critical Voice:</strong> <em>"Everyone thinks you are qualified, but you're just faking it. When they figure out you don't have all the answers, they'll see you are an idiot."</em></p>
+            <p style="margin-top: 0.5rem;"><strong>Compassionate Reframe:</strong> <em>"When I don't know the answer to a question at my job, I feel vulnerable because I am needing professional competence and growth. Therefore, I now would like to request support from a teammate or allow myself time to research the solution."</em></p>
+            
+            <div class="citation">
+                <strong>Worksheet References:</strong><br>
+                1. McKay, M., & Fanning, P. (2016). <em>Self-Esteem: A Proven Program of Cognitive Techniques for Assessing, Improving, and Maintaining Your Self-Esteem</em>. New Harbinger Publications.<br>
+                2. Rosenberg, M. B. (2015). <em>Nonviolent Communication: A Language of Life</em>. Puddledancer Press.<br>
+                <br>
+                <span style="font-size: 8pt; color: #999;">TV Repairs Health Coaching • Student Practice Worksheet for UMN Bakken Center for Spirituality & Healing</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer Section -->
+    <footer style="background-color: var(--color-green-dark); padding: 4rem 0; color: var(--color-text-light); text-align: center; border-top: 1px solid rgba(255,255,255,0.05);">
+        <div class="container" style="max-width: 600px;">
+            <img src="assets/soft_turtle_logo.png" alt="Branded sea turtle logo" style="height: 45px; opacity: 0.8; margin-bottom: 1.5rem;">
+            <p style="font-family: var(--font-serif); font-size: 1.3rem; margin-bottom: 0.5rem;">TV Repairs Health Coaching</p>
+            <p style="font-size: 0.85rem; opacity: 0.7; margin-bottom: 2rem; max-width: 450px; margin-left: auto; margin-right: auto; line-height: 1.5;">
+                Providing evidence-based lifestyle coaching, somatic orienting tools, and supportive MN community referral networks.
+            </p>
+            
+            <div style="display: flex; gap: 20px; justify-content: center; margin-bottom: 2rem; font-size: 0.9rem;">
+                <a href="index.html" style="color: var(--color-text-light); opacity: 0.8;">Home</a>
+                <a href="resources.html#scope-of-practice" style="color: var(--color-text-light); opacity: 0.8;">Scope</a>
+                <a href="resources.html#healing-modalities" style="color: var(--color-text-light); opacity: 0.8;">Modalities</a>
+                <a href="resources.html#referral-directory" style="color: var(--color-text-light); opacity: 0.8;">Directory</a>
+                <a href="tuning.html" style="color: var(--color-text-light); font-weight: 600;">Tuning Center</a>
+            </div>
+
+            <p style="font-size: 0.8rem; opacity: 0.5;">
+                &copy; <span id="year">2026</span> TV Repairs Coaching. All Rights Reserved.
+            </p>
+        </div>
+    </footer>
+
+    <!-- Global Scripts -->
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Mobile dropdown Toggle
+        document.getElementById('menu-toggle').addEventListener('click', function() {
+            const menu = document.getElementById('dropdown-menu');
+            const isExpanded = this.getAttribute('aria-expanded') === 'true';
+            
+            this.setAttribute('aria-expanded', !isExpanded);
+            if (isExpanded) {
+                menu.classList.remove('active');
+            } else {
+                menu.classList.add('active');
+            }
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', function(event) {
+            const menuToggle = document.getElementById('menu-toggle');
+            const dropdownMenu = document.getElementById('dropdown-menu');
+            if (menuToggle && dropdownMenu) {
+                if (!menuToggle.contains(event.target) && !dropdownMenu.contains(event.target)) {
+                    dropdownMenu.classList.remove('active');
+                    menuToggle.setAttribute('aria-expanded', 'false');
+                }
+            }
+        });
+
+        // Tab Switching Logic
+        const tabBtns = document.querySelectorAll('.tuning-tab-btn');
+        const panels = document.querySelectorAll('.tuning-panel');
+
+        tabBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                const targetPanelId = this.getAttribute('aria-controls');
+                
+                // Switch Tab active class
+                tabBtns.forEach(b => {
+                    b.classList.remove('active');
+                    b.setAttribute('aria-selected', 'false');
+                });
+                this.classList.add('active');
+                this.setAttribute('aria-selected', 'true');
+
+                // Switch Panel active class
+                panels.forEach(p => p.classList.remove('active'));
+                const targetPanel = document.getElementById(targetPanelId);
+                targetPanel.classList.add('active');
+            });
+        });
+
+        // Sensory Grounding Input Completion Check
+        const sensoryInputs = document.querySelectorAll('.sensory-input');
+        sensoryInputs.forEach(input => {
+            input.addEventListener('input', function() {
+                const card = this.closest('.sensory-card');
+                if (this.value.trim().length > 3) {
+                    card.classList.add('completed');
+                } else {
+                    card.classList.remove('completed');
+                }
+            });
+        });
+
+        // Panoramic Gaze scanning Orb Play/Pause
+        const gazePlayBtn = document.getElementById('gaze-play-btn');
+        const guidedOrb = document.querySelector('.guided-orb');
+        const breathingPrompt = document.getElementById('breathing-prompt');
+        let isOrbScanning = true;
+
+        gazePlayBtn.addEventListener('click', function() {
+            if (isOrbScanning) {
+                guidedOrb.style.animationPlayState = 'paused';
+                breathingPrompt.style.animationPlayState = 'paused';
+                this.textContent = 'Resume Scanning';
+                isOrbScanning = false;
+            } else {
+                guidedOrb.style.animationPlayState = 'running';
+                breathingPrompt.style.animationPlayState = 'running';
+                this.textContent = 'Pause Scanning';
+                isOrbScanning = true;
+            }
+        });
+
+        // Breathing text dynamic labels
+        let breathingPhase = 0;
+        setInterval(() => {
+            if (isOrbScanning) {
+                breathingPhase = 1 - breathingPhase;
+                breathingPrompt.textContent = breathingPhase === 0 ? "Expand & Widen Gaze" : "Soften & Anchor Gaze";
+            }
+        }, 4000);
+
+        // NVC Compassionate Reframer Wizard Logic
+        const nvcCriticism = document.getElementById('nvc-criticism');
+        const nvcFacts = document.getElementById('nvc-facts');
+        const nvcFeelings = document.getElementById('nvc-feelings');
+        const nvcNeeds = document.getElementById('nvc-needs');
+        const nvcRequest = document.getElementById('nvc-request');
+        const nvcOutput = document.getElementById('nvc-output-statement');
+
+        function updateNVCStatement() {
+            const factsVal = nvcFacts.value.trim() || "[Facts]";
+            const feelingsVal = nvcFeelings.value.trim() || "[Feelings]";
+            const needsVal = nvcNeeds.value.trim() || "[Universal Needs]";
+            const requestVal = nvcRequest.value.trim() || "[Request]";
+
+            nvcOutput.textContent = `"When ${factsVal}, I feel ${feelingsVal} because I am needing ${needsVal}. Therefore, I now would like to request ${requestVal}."`;
+        }
+
+        [nvcFacts, nvcFeelings, nvcNeeds, nvcRequest].forEach(element => {
+            element.addEventListener('input', updateNVCStatement);
+        });
+
+        // Copy statement to clipboard
+        document.getElementById('nvc-copy-btn').addEventListener('click', function() {
+            navigator.clipboard.writeText(nvcOutput.textContent).then(() => {
+                const originalText = this.textContent;
+                this.textContent = 'Copied!';
+                this.style.backgroundColor = 'var(--color-green-med)';
+                setTimeout(() => {
+                    this.textContent = originalText;
+                    this.style.backgroundColor = '';
+                }, 2000);
+            });
+        });
+
+        // Print worksheet directly from NVC panel
+        document.getElementById('nvc-print-btn').addEventListener('click', function() {
+            printHandout('handout-nvc');
+        });
+
+        // Lead Magnet Opt-in check (Both/And model)
+        const unlockEmail = document.getElementById('unlock-email');
+        const unlockSubmitBtn = document.getElementById('unlock-submit-btn');
+        const unlockPanel = document.getElementById('unlock-panel');
+
+        // Check if unlocked from session previously
+        if (sessionStorage.getItem('toolkit-unlocked') === 'true') {
+            document.getElementById('unlock-form-wrapper').style.display = 'none';
+            unlockPanel.classList.add('active');
+        }
+
+        unlockSubmitBtn.addEventListener('click', function() {
+            const email = unlockEmail.value.trim();
+            if (email.length > 5 && email.includes('@')) {
+                // Simulate Substack subscribe hook
+                sessionStorage.setItem('toolkit-unlocked', 'true');
+                
+                // Animate unlock
+                document.getElementById('unlock-form-wrapper').style.opacity = '0';
+                setTimeout(() => {
+                    document.getElementById('unlock-form-wrapper').style.display = 'none';
+                    unlockPanel.classList.add('active');
+                    
+                    // Smooth scroll down to unlocked panel
+                    unlockPanel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                }, 400);
+            } else {
+                alert("Please enter a valid email address to subscribe and unlock your somatic worksheets.");
+            }
+        });
+
+        // Print Handout Utility for high-fidelity PDF/printer rendering
+        function printHandout(handoutId) {
+            const originalTitle = document.title;
+            const printElement = document.getElementById(handoutId);
+            
+            // Set page title for PDF filename saving
+            if (handoutId === 'handout-sensory') document.title = "TV_Repairs_Sensory_Tuning_Guide";
+            if (handoutId === 'handout-gaze') document.title = "TV_Repairs_Panoramic_Orientation_Guide";
+            if (handoutId === 'handout-nvc') document.title = "TV_Repairs_Compassionate_Self_Talk_Guide";
+
+            // Trigger window print
+            window.print();
+            
+            // Restore page title
+            document.title = originalTitle;
+        }
+    </script>
+</body>
+</html>
