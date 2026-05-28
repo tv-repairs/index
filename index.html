@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Steady Progress | Health Coaching</title>
     <meta name="description" content="Health coaching services prioritizing steady progress and longevity.">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?v=1.2">
     
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="assets/soft_turtle_logo.png">
@@ -424,10 +424,70 @@
                 }
             });
 
+            // Touch support for dragging on mobile/tablets
+            widgetTrigger.addEventListener('touchstart', function(e) {
+                if (e.touches.length === 1) {
+                    dragStarted = true;
+                    isDragging = false;
+                    startX = e.touches[0].clientX;
+                    startY = e.touches[0].clientY;
+                    
+                    const rect = widgetContainer.getBoundingClientRect();
+                    initialLeft = rect.left;
+                    initialTop = rect.top;
+                }
+            }, { passive: true });
+
+            document.addEventListener('touchmove', function(e) {
+                if (!dragStarted) return;
+                
+                const dx = e.touches[0].clientX - startX;
+                const dy = e.touches[0].clientY - startY;
+                
+                if (Math.abs(dx) > 5 || Math.abs(dy) > 5) {
+                    isDragging = true;
+                    widgetContainer.classList.add('dragging');
+                    
+                    widgetContainer.style.bottom = 'auto';
+                    widgetContainer.style.right = 'auto';
+                    
+                    let newLeft = initialLeft + dx;
+                    let newTop = initialTop + dy;
+                    
+                    const pad = 10;
+                    const widgetWidth = widgetContainer.offsetWidth;
+                    const widgetHeight = widgetContainer.offsetHeight;
+                    
+                    newLeft = Math.max(pad, Math.min(newLeft, window.innerWidth - widgetWidth - pad));
+                    newTop = Math.max(pad, Math.min(newTop, window.innerHeight - widgetHeight - pad));
+                    
+                    widgetContainer.style.left = newLeft + 'px';
+                    widgetContainer.style.top = newTop + 'px';
+                    
+                    if (e.cancelable) e.preventDefault();
+                }
+            }, { passive: false });
+
+            document.addEventListener('touchend', function() {
+                if (dragStarted) {
+                    dragStarted = false;
+                    setTimeout(() => {
+                        widgetContainer.classList.remove('dragging');
+                        adjustCardPosition();
+                    }, 50);
+                }
+            });
+
             // Dynamically adjust crisis card positioning so it never overflows the viewport
             function adjustCardPosition() {
                 const card = document.getElementById('crisis-widget-card');
                 if (!card) return;
+
+                if (window.innerWidth <= 480) {
+                    // Reset positioning classes on mobile viewports to let CSS media queries take full control
+                    card.classList.remove('pos-below', 'pos-left');
+                    return;
+                }
 
                 const triggerRect = widgetTrigger.getBoundingClientRect();
                 const cardWidth = 320;
@@ -461,13 +521,15 @@
                     dragStarted = false;
                     setTimeout(() => {
                         widgetContainer.classList.remove('dragging');
-                        // Recalculate card position if open after dragging ends
-                        if (widgetContainer.classList.contains('active')) {
-                            adjustCardPosition();
-                        }
+                        // Always recalculate card position after dragging ends because hover may immediately display it
+                        adjustCardPosition();
                     }, 50);
                 }
             });
+
+            // Recalculate on hover and focus so that the CSS-based hover is perfectly positioned immediately
+            widgetContainer.addEventListener('mouseenter', adjustCardPosition);
+            widgetContainer.addEventListener('focusin', adjustCardPosition);
 
             // Toggle Card Visibility (Avoid trigger on drag release)
             widgetTrigger.addEventListener('click', function(e) {
@@ -488,11 +550,7 @@
             });
 
             // Recalculate on window resize
-            window.addEventListener('resize', () => {
-                if (widgetContainer.classList.contains('active')) {
-                    adjustCardPosition();
-                }
-            });
+            window.addEventListener('resize', adjustCardPosition);
 
             // Close actions
             widgetClose.addEventListener('click', function(e) {
