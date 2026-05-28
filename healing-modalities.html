@@ -253,7 +253,7 @@
                                     <div class="modality-meta">
                                         <p><strong>Primary Focus:</strong> Distress tolerance, emotional regulation, interpersonal effectiveness, and dialectical balance.</p>
                                         <p><strong>How it Helps:</strong> Teaches concrete skills to ride intense emotional waves, survive distress without reacting impulsively, and maintain healthy boundaries.</p>
-                                        <p style="margin-top: 1rem;"><a href="https://www.youtube.com/watch?v=wAucb7X13Ew" target="_blank" class="explainer-btn">Watch Explainer</a></p>
+                                        <p style="margin-top: 1rem;"><a href="https://www.youtube.com/watch?v=lIzCreREcQ4" target="_blank" class="explainer-btn">Watch Explainer</a></p>
                                     </div>
                                 </div>
                             </div>
@@ -303,7 +303,7 @@
                                     <div class="modality-meta">
                                         <p><strong>Primary Focus:</strong> Nonverbal symbolic expression, somatic externalization, and visual trauma processing.</p>
                                         <p><strong>How it Helps:</strong> Bypasses analytical defense blocks to express developmental trauma and complex identity conflicts.</p>
-                                        <p style="margin-top: 1rem;"><a href="https://www.youtube.com/watch?v=pdiVQqfXzDU" target="_blank" class="explainer-btn">Watch Explainer</a></p>
+                                        <p style="margin-top: 1rem;"><a href="https://www.youtube.com/watch?v=arfeBvwpavc" target="_blank" class="explainer-btn">Watch Explainer</a></p>
                                     </div>
                                 </div>
                             </div>
@@ -353,7 +353,7 @@
                                     <div class="modality-meta">
                                         <p><strong>Primary Focus:</strong> Non-invasive targeted magnetic neuro-modulation of mood control circuits in the brain.</p>
                                         <p><strong>How it Helps:</strong> Provides clinical relief for severe, treatment-resistant depression when medication or traditional therapy has not succeeded.</p>
-                                        <p style="margin-top: 1rem;"><a href="https://www.youtube.com/watch?v=a_8bOCNjJpY" target="_blank" class="explainer-btn">Watch Explainer</a></p>
+                                        <p style="margin-top: 1rem;"><a href="https://www.youtube.com/watch?v=fD7SdDSSBSk" target="_blank" class="explainer-btn">Watch Explainer</a></p>
                                     </div>
                                 </div>
                             </div>
@@ -485,9 +485,10 @@
                     
                     if (videoId) {
                         e.preventDefault(); // Stop standard tab redirection
-                        // Set iframe source to autoplay-enabled embed link with origin parameter to prevent Error 153
+                        // Set iframe source to autoplay-enabled embed link with origin parameter to prevent Error 153.
+                        // Using youtube-nocookie.com for better adblocker compatibility and privacy.
                         const originParam = window.location.origin === "null" || !window.location.origin ? "" : `&origin=${encodeURIComponent(window.location.origin)}`;
-                        videoIframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1${originParam}`;
+                        videoIframe.src = `https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1${originParam}`;
                         // Trigger native dialog display
                         videoModal.showModal();
                     }
