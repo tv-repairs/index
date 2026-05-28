@@ -424,11 +424,47 @@
                 }
             });
 
+            // Dynamically adjust crisis card positioning so it never overflows the viewport
+            function adjustCardPosition() {
+                const card = document.getElementById('crisis-widget-card');
+                if (!card) return;
+
+                const triggerRect = widgetTrigger.getBoundingClientRect();
+                const cardWidth = 320;
+                const cardEstimatedHeight = 250;
+
+                // Vertical adjustment
+                const spaceAbove = triggerRect.top;
+                const spaceBelow = window.innerHeight - triggerRect.bottom;
+
+                if (spaceAbove < cardEstimatedHeight && spaceBelow > spaceAbove) {
+                    card.classList.add('pos-below');
+                } else {
+                    card.classList.remove('pos-below');
+                }
+
+                // Horizontal adjustment
+                const spaceLeft = triggerRect.right;
+                const spaceRight = window.innerWidth - triggerRect.left;
+
+                if (spaceRight < cardWidth && spaceLeft > spaceRight) {
+                    card.classList.remove('pos-left'); // Align right (default)
+                } else if (spaceLeft < cardWidth && spaceRight > spaceLeft) {
+                    card.classList.add('pos-left'); // Align left
+                } else {
+                    card.classList.remove('pos-left');
+                }
+            }
+
             document.addEventListener('mouseup', function() {
                 if (dragStarted) {
                     dragStarted = false;
                     setTimeout(() => {
                         widgetContainer.classList.remove('dragging');
+                        // Recalculate card position if open after dragging ends
+                        if (widgetContainer.classList.contains('active')) {
+                            adjustCardPosition();
+                        }
                     }, 50);
                 }
             });
@@ -445,8 +481,16 @@
                     widgetContainer.classList.remove('active');
                     widgetTrigger.setAttribute('aria-expanded', 'false');
                 } else {
+                    adjustCardPosition(); // Adjust position before opening card!
                     widgetContainer.classList.add('active');
                     widgetTrigger.setAttribute('aria-expanded', 'true');
+                }
+            });
+
+            // Recalculate on window resize
+            window.addEventListener('resize', () => {
+                if (widgetContainer.classList.contains('active')) {
+                    adjustCardPosition();
                 }
             });
 

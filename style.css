@@ -474,6 +474,17 @@ a:hover, a:focus { color: var(--color-red-accent); text-decoration: underline; }
     transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), opacity 0.3s ease;
 }
 
+/* Responsive modifiers to prevent viewport overflow when dragged */
+.crisis-widget-card.pos-below {
+    bottom: auto;
+    top: calc(100% + 15px);
+    transform: translateY(-15px);
+}
+.crisis-widget-card.pos-left {
+    right: auto;
+    left: 0;
+}
+
 /* Hover-to-reveal on desktop */
 .crisis-widget-container:hover .crisis-widget-card,
 .crisis-widget-container:focus-within .crisis-widget-card,
