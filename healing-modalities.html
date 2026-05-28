@@ -407,7 +407,7 @@
         <div class="video-modal-inner">
             <button class="video-modal-close" aria-label="Close video player">&times;</button>
             <div class="video-iframe-container">
-                <iframe id="video-iframe" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                <iframe id="video-iframe" src="" frameborder="0" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
             </div>
         </div>
     </dialog>
@@ -485,8 +485,9 @@
                     
                     if (videoId) {
                         e.preventDefault(); // Stop standard tab redirection
-                        // Set iframe source to autoplay-enabled embed link
-                        videoIframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
+                        // Set iframe source to autoplay-enabled embed link with origin parameter to prevent Error 153
+                        const originParam = window.location.origin === "null" || !window.location.origin ? "" : `&origin=${encodeURIComponent(window.location.origin)}`;
+                        videoIframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1${originParam}`;
                         // Trigger native dialog display
                         videoModal.showModal();
                     }
