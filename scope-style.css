@@ -581,3 +581,69 @@
     border: none;
 }
 
+/* --- Layout Compatibility overrides for Unified Resources Page --- */
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 130px; /* Accounts for sticky main header + sub-navigation */
+}
+
+/* Resources Subpage Sub-Navigation */
+.resources-subnav {
+    background-color: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(16, 63, 42, 0.08);
+    position: sticky;
+    top: 80px; /* Sticks right below main header */
+    z-index: 90;
+    padding: 0.75rem 0;
+    transition: all 0.3s ease;
+}
+.subnav-links {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    flex-wrap: wrap;
+}
+.subnav-link {
+    font-family: var(--font-heading);
+    font-size: 1rem;
+    font-weight: 600;
+    color: #555;
+    text-decoration: none;
+    padding: 0.25rem 0.5rem;
+    position: relative;
+    transition: color 0.2s ease;
+}
+.subnav-link:hover {
+    color: var(--color-green-med);
+}
+.subnav-link.active {
+    color: var(--color-green-dark);
+}
+.subnav-link.active::after {
+    content: '';
+    position: absolute;
+    bottom: -0.85rem;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background-color: var(--color-red-accent);
+    border-radius: 2px;
+}
+@media (max-width: 600px) {
+    .resources-subnav {
+        top: 78px;
+        padding: 0.5rem 0;
+    }
+    .subnav-links {
+        gap: 1rem;
+    }
+    .subnav-link {
+        font-size: 0.88rem;
+    }
+}
+
