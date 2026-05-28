@@ -507,40 +507,35 @@
     <header class="site-header">
         <div class="container header-container">
             <div class="logo">
-                <img src="assets/soft_turtle_logo.png" alt="Line drawing of a sea turtle, logo for TV Repairs Health Coaching" class="logo-img">
-                <span class="logo-text">TV Repairs Coaching</span>
+                <a href="index.html" style="display: flex; align-items: center; gap: 10px; text-decoration: none;">
+                    <img src="assets/soft_turtle_logo.png" alt="Line drawing of a sea turtle, logo for TV Repairs Health Coaching" class="logo-img">
+                    <span class="logo-text">TV Repairs Coaching</span>
+                </a>
             </div>
-            
-            <div class="nav-actions">
-                <!-- Desktop Navigation Menu -->
-                <nav class="desktop-nav" aria-label="Main navigation">
-                    <ul class="nav-links">
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="resources.html#scope-of-practice">Scope</a></li>
-                        <li><a href="resources.html#healing-modalities">Modalities</a></li>
-                        <li><a href="resources.html#referral-directory">Directory</a></li>
-                        <li><a href="tuning.html" class="active">Tuning Center</a></li>
+            <nav aria-label="Main Navigation" class="main-nav">
+                <div class="nav-actions">
+                    <a href="index.html#contact" class="btn btn-primary nav-cta">Let's Talk</a>
+                    <button class="menu-toggle" id="menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="dropdown-menu">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--color-green-dark)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="3" y1="12" x2="21" y2="12"></line>
+                            <line x1="3" y1="6" x2="21" y2="6"></line>
+                            <line x1="3" y1="18" x2="21" y2="18"></line>
+                        </svg>
+                    </button>
+                </div>
+                <!-- Dropdown Menu -->
+                <div id="dropdown-menu" class="dropdown-menu">
+                    <ul class="dropdown-links">
+                        <li><a href="index.html#who-i-work-with">Who I Work With</a></li>
+                        <li><a href="index.html#services">My Services</a></li>
+                        <li><a href="index.html#process">How It Works</a></li>
+                        <li style="border-top: 1px solid rgba(16, 63, 42, 0.1); margin-top: 0.5rem; padding-top: 0.5rem;"><a href="resources.html#scope-of-practice">Scope of Practice</a></li>
+                        <li><a href="resources.html#healing-modalities">Healing Modalities</a></li>
+                        <li><a href="resources.html#referral-directory">Referral Directory</a></li>
+                        <li><a href="tuning.html" class="active" style="font-weight: 600; color: var(--color-red-accent);">Personal Tuning Center</a></li>
                     </ul>
-                </nav>
-                <button class="menu-toggle" id="menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="dropdown-menu">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#103F2A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                        <line x1="3" y1="12" x2="21" y2="12"></line>
-                        <line x1="3" y1="6" x2="21" y2="6"></line>
-                        <line x1="3" y1="18" x2="21" y2="18"></line>
-                    </svg>
-                </button>
-            </div>
-
-            <!-- Mobile Dropdown Menu -->
-            <div class="dropdown-menu" id="dropdown-menu" role="region" aria-label="Mobile navigation">
-                <ul class="dropdown-links">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="resources.html#scope-of-practice">Scope of Practice</a></li>
-                    <li><a href="resources.html#healing-modalities">Healing Modalities</a></li>
-                    <li><a href="resources.html#referral-directory">Referral Directory</a></li>
-                    <li><a href="tuning.html" class="active">Personal Tuning Center</a></li>
-                </ul>
-            </div>
+                </div>
+            </nav>
         </div>
     </header>
 
