@@ -402,6 +402,16 @@
         </div>
     </footer>
 
+    <!-- Video Explainer Lightbox Modal Dialog -->
+    <dialog id="video-modal" class="video-modal" aria-label="Explainer Video Player">
+        <div class="video-modal-inner">
+            <button class="video-modal-close" aria-label="Close video player">&times;</button>
+            <div class="video-iframe-container">
+                <iframe id="video-iframe" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            </div>
+        </div>
+    </dialog>
+
     <script>
         document.getElementById('year').textContent = new Date().getFullYear();
 
@@ -455,48 +465,50 @@
         });
 
         // Video Lightbox Modal Dialog Controller
-        const videoModal = document.getElementById('video-modal');
-        const videoIframe = document.getElementById('video-iframe');
-        const videoCloseBtn = document.querySelector('.video-modal-close');
-        const explainerButtons = document.querySelectorAll('.explainer-btn');
+        document.addEventListener('DOMContentLoaded', function() {
+            const videoModal = document.getElementById('video-modal');
+            const videoIframe = document.getElementById('video-iframe');
+            const videoCloseBtn = document.querySelector('.video-modal-close');
+            const explainerButtons = document.querySelectorAll('.explainer-btn');
 
-        // Helper to extract YouTube video ID
-        function getYouTubeId(url) {
-            const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
-            const match = url.match(regExp);
-            return (match && match[2].length === 11) ? match[2] : null;
-        }
+            // Helper to extract YouTube video ID
+            function getYouTubeId(url) {
+                const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+                const match = url.match(regExp);
+                return (match && match[2].length === 11) ? match[2] : null;
+            }
 
-        explainerButtons.forEach(btn => {
-            btn.addEventListener('click', function(e) {
-                const href = this.getAttribute('href');
-                const videoId = getYouTubeId(href);
-                
-                if (videoId) {
-                    e.preventDefault(); // Stop standard tab redirection
-                    // Set iframe source to autoplay-enabled embed link
-                    videoIframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
-                    // Trigger native dialog display
-                    videoModal.showModal();
+            explainerButtons.forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    const href = this.getAttribute('href');
+                    const videoId = getYouTubeId(href);
+                    
+                    if (videoId) {
+                        e.preventDefault(); // Stop standard tab redirection
+                        // Set iframe source to autoplay-enabled embed link
+                        videoIframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
+                        // Trigger native dialog display
+                        videoModal.showModal();
+                    }
+                });
+            });
+
+            // Stop video audio playback instantly when the dialog is closed (handles cross button, backdrop, and Escape key clicks)
+            videoModal.addEventListener('close', function() {
+                videoIframe.src = "";
+            });
+
+            // Close on clicking the cross button
+            videoCloseBtn.addEventListener('click', function() {
+                videoModal.close();
+            });
+
+            // Close when clicking on the backdrop overlay (outside the dialog boundaries)
+            videoModal.addEventListener('click', function(e) {
+                if (e.target === videoModal) {
+                    videoModal.close();
                 }
             });
-        });
-
-        // Stop video audio playback instantly when the dialog is closed (handles cross button, backdrop, and Escape key clicks)
-        videoModal.addEventListener('close', function() {
-            videoIframe.src = "";
-        });
-
-        // Close on clicking the cross button
-        videoCloseBtn.addEventListener('click', function() {
-            videoModal.close();
-        });
-
-        // Close when clicking on the backdrop overlay (outside the dialog boundaries)
-        videoModal.addEventListener('click', function(e) {
-            if (e.target === videoModal) {
-                videoModal.close();
-            }
         });
     </script>
 
@@ -630,15 +642,5 @@
             });
         })();
     </script>
-
-    <!-- Video Explainer Lightbox Modal Dialog -->
-    <dialog id="video-modal" class="video-modal" aria-label="Explainer Video Player">
-        <div class="video-modal-inner">
-            <button class="video-modal-close" aria-label="Close video player">&times;</button>
-            <div class="video-iframe-container">
-                <iframe id="video-iframe" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-            </div>
-        </div>
-    </dialog>
 </body>
 </html>
