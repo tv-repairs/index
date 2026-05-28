@@ -328,7 +328,7 @@
     transform: translateY(-5px);
     box-shadow: 0 15px 35px rgba(0,0,0,0.06);
 }
-.directory-card h4 {
+.directory-card h3 {
     font-family: var(--font-serif);
     font-size: 1.4rem;
     color: var(--color-green-dark);
@@ -438,7 +438,7 @@
     text-align: center;
     box-shadow: 0 4px 10px rgba(0,0,0,0.01);
 }
-.crisis-card h4 {
+.crisis-card h3 {
     font-family: var(--font-serif);
     font-size: 1.25rem;
     color: var(--color-green-dark);
