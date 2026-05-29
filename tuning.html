@@ -444,37 +444,55 @@
 
         /* Styles for high-fidelity browser print rendering of UMN handouts */
         @media print {
-            body * {
-                visibility: hidden;
+            /* Hide all standard screen elements */
+            header, footer, main, .no-print {
+                display: none !important;
             }
-            .print-worksheet, .print-worksheet * {
-                visibility: visible;
+            
+            /* Ensure the guides container is displayed */
+            .printable-guides-container {
+                display: block !important;
             }
+            
+            /* Hide all worksheets by default in print */
             .print-worksheet {
-                position: absolute;
-                left: 0;
-                top: 0;
-                width: 100%;
+                display: none !important;
                 background: white !important;
                 color: #1a1a1a !important;
                 padding: 2rem !important;
                 font-family: 'Outfit', sans-serif !important;
                 line-height: 1.6 !important;
             }
-            .print-worksheet h1 {
+            
+            /* Show only the active worksheet */
+            body.printing-sensory #handout-sensory {
+                display: block !important;
+            }
+            body.printing-gaze #handout-gaze {
+                display: block !important;
+            }
+            body.printing-nvc #handout-nvc {
+                display: block !important;
+            }
+            
+            /* Worksheet Typography & Brand Styling */
+            .print-worksheet h2 {
                 font-family: 'Playfair Display', serif !important;
                 font-size: 2.2rem !important;
                 color: #103F2A !important;
                 border-bottom: 2px solid #103F2A !important;
                 padding-bottom: 0.5rem !important;
                 margin-bottom: 1.5rem !important;
+                margin-top: 0 !important;
+                font-weight: 600 !important;
             }
-            .print-worksheet h2 {
+            .print-worksheet h3 {
                 font-family: 'Playfair Display', serif !important;
                 font-size: 1.4rem !important;
                 color: #2E6A49 !important;
                 margin-top: 1.5rem !important;
                 margin-bottom: 0.5rem !important;
+                font-weight: 600 !important;
             }
             .print-worksheet p, .print-worksheet li {
                 font-size: 11pt !important;
@@ -484,11 +502,8 @@
                 font-size: 9pt !important;
                 color: #666 !important;
                 border-top: 1px solid #ddd !important;
-                margin-top: 2rem !important;
+                margin-top: 2.5rem !important;
                 padding-top: 0.5rem !important;
-            }
-            .no-print {
-                display: none !important;
             }
             .page-break {
                 page-break-before: always;
@@ -760,7 +775,7 @@
             <h2>Using Your Senses To Relax</h2>
             <p>Below are evidence-based instructions to use your five senses to bring your body and mind back into focus and into the present moment. As you follow the steps, you will slowly start feeling your body and mind become focused on what is right in front of you.</p>
             
-            <h2>The Five Senses Technique</h2>
+            <h3>The Five Senses Technique</h3>
             <ol style="margin-left: 2rem; margin-top: 1rem; margin-bottom: 2rem;">
                 <li style="margin-bottom: 1rem;"><strong>Say out loud the name of five things you can see with your eyes.</strong></li>
                 <li style="margin-bottom: 1rem;"><strong>Say out loud the name of four things you can touch with your hands.</strong></li>
@@ -769,7 +784,19 @@
                 <li style="margin-bottom: 1rem;"><strong>Say out loud the name of one thing you can taste.</strong> (It is ok to find something to eat or drink and then name it.)</li>
             </ol>
             
-            <h2>Why It Works</h2>
+            <!-- Dynamic user input container for printout -->
+            <div id="print-sensory-observations" style="display: none; margin: 1.5rem 0; background-color: rgba(46, 106, 73, 0.04); padding: 1.5rem; border-radius: 12px; border: 1px dashed #103F2A;">
+                <h4 style="margin-top: 0; margin-bottom: 0.5rem; color: #103F2A; font-family: 'Playfair Display', serif; font-size: 1.15rem; font-weight: 600;">Your Grounding Observations:</h4>
+                <ul style="margin-left: 1.5rem; margin-bottom: 0; color: #333; line-height: 1.5;">
+                    <li style="margin-bottom: 0.4rem;"><strong>5 things you see:</strong> <span id="print-sensory-see"></span></li>
+                    <li style="margin-bottom: 0.4rem;"><strong>4 things you touch:</strong> <span id="print-sensory-touch"></span></li>
+                    <li style="margin-bottom: 0.4rem;"><strong>3 things you hear:</strong> <span id="print-sensory-hear"></span></li>
+                    <li style="margin-bottom: 0.4rem;"><strong>2 things you smell:</strong> <span id="print-sensory-smell"></span></li>
+                    <li style="margin-bottom: 0.4rem;"><strong>1 thing you taste:</strong> <span id="print-sensory-taste"></span></li>
+                </ul>
+            </div>
+            
+            <h3>Why It Works</h3>
             <p>Using your senses to calm and regulate yourself has lasting, evidence-based health benefits. The technique has been shown to reduce emotional overwhelm, regulate intense emotions, release the sympathetic nervous system's stress response, and increase immediate cognitive focus.</p>
             
             <div class="citation">
@@ -788,7 +815,7 @@
             
             <p>You are invited to use your visual senses to bring yourself back to the present moment. As you follow the exercise below, you may notice a release of physical tension, your breathing becoming more relaxed, or you may notice no change at all. There is no wrong way to orient yourself to the present.</p>
             
-            <h2>Visual Orientation Exercise</h2>
+            <h3>Visual Orientation Exercise</h3>
             <ol style="margin-left: 2rem; margin-top: 1rem; margin-bottom: 2rem;">
                 <li style="margin-bottom: 1rem;"><strong>Let your gaze widen your view like a panorama.</strong> Widen your peripheral vision.</li>
                 <li style="margin-bottom: 1rem;"><strong>Look around your room slowly.</strong> Move your gaze from side to side, above you, on the ground, and behind you.</li>
@@ -797,7 +824,7 @@
                 <li style="margin-bottom: 1rem;"><strong>Practice this orienting sweep for as long as you'd like</strong>, or until you feel your body come into the present.</li>
             </ol>
             
-            <h2>Why Visual Orienting Helps</h2>
+            <h3>Why Visual Orienting Helps</h3>
             <p>Scanning and orienting visually signals to the primitive areas of the brain (the brainstem and amygdala) that there is no imminent threat in the environment. By widening your gaze, you actively interrupt active hyper-focus on stressors and allow the parasympathetic nervous system to restore balanced breathing and pulse rates.</p>
             
             <div class="citation">
@@ -816,7 +843,7 @@
             
             <p>Many of these beliefs remain supportive, while others become limiting, often speaking to us in a harsh, judgmental, self-critical voice (such as imposter syndrome: <em>"Everyone thinks you know what you are doing, but you're just faking it..."</em>). Follow this practice to learn how to transform your self-criticism into a compassionate inner voice.</p>
             
-            <h2>The 4-Step Reframing Practice</h2>
+            <h3>The 4-Step Reframing Practice</h3>
             <div style="background-color: #f9f9f9; padding: 1.5rem; border-radius: 12px; margin-bottom: 2rem;">
                 <p style="margin-bottom: 0.75rem;"><strong>Step 1. What are the objective facts?</strong> (Remove stories or absolute judgments like "idiot" or "failing").</p>
                 <p style="margin-bottom: 0.75rem;"><strong>Step 2. What are you feeling emotionally?</strong> (e.g., vulnerable, nervous, tired).</p>
@@ -824,12 +851,20 @@
                 <p style="margin-bottom: 0.75rem;"><strong>Step 4. What is your request?</strong> (Formulate a clear, concrete, and doable next action).</p>
             </div>
             
-            <h2>The NVC Compassionate Reframing Formula</h2>
+            <h3>The NVC Compassionate Reframing Formula</h3>
             <p style="font-size: 1.25rem !important; font-style: italic; text-align: center; margin: 2rem 0; color: #103F2A; border-left: 4px solid #B03A2E; padding-left: 1rem;">
                 "When [Facts], I feel [Feelings], because I am needing [Needs]. Therefore, I now would like [Request]."
             </p>
             
-            <h2>Example Reframe</h2>
+            <!-- Dynamic NVC user output container for printout -->
+            <div id="print-custom-reframe-section" style="margin: 1.5rem 0; background-color: rgba(46, 106, 73, 0.04); padding: 1.5rem; border-radius: 12px; border: 1px dashed #103F2A;">
+                <h4 style="margin-top: 0; margin-bottom: 0.5rem; color: #103F2A; font-family: 'Playfair Display', serif; font-size: 1.15rem; font-weight: 600;">Your Compassionate Reframe Statement:</h4>
+                <p id="print-custom-reframe-text" style="font-size: 1.2rem !important; font-style: italic; font-weight: 600; color: #103F2A; margin-bottom: 0; line-height: 1.5;">
+                    "When I don't know the answer to a question, I feel vulnerable because I need professional competence and growth. Therefore, I would like to request support from a teammate."
+                </p>
+            </div>
+            
+            <h3>Example Reframe</h3>
             <p><strong>Critical Voice:</strong> <em>"Everyone thinks you are qualified, but you're just faking it. When they figure out you don't have all the answers, they'll see you are an idiot."</em></p>
             <p style="margin-top: 0.5rem;"><strong>Compassionate Reframe:</strong> <em>"When I don't know the answer to a question at my job, I feel vulnerable because I am needing professional competence and growth. Therefore, I now would like to request support from a teammate or allow myself time to research the solution."</em></p>
             
@@ -1033,17 +1068,61 @@
         // Print Handout Utility for high-fidelity PDF/printer rendering
         function printHandout(handoutId) {
             const originalTitle = document.title;
-            const printElement = document.getElementById(handoutId);
+            let printClass = '';
             
-            // Set page title for PDF filename saving
-            if (handoutId === 'handout-sensory') document.title = "TV_Repairs_Sensory_Tuning_Guide";
-            if (handoutId === 'handout-gaze') document.title = "TV_Repairs_Panoramic_Orientation_Guide";
-            if (handoutId === 'handout-nvc') document.title = "TV_Repairs_Compassionate_Self_Talk_Guide";
+            // Set page title for PDF filename saving and select active class
+            if (handoutId === 'handout-sensory') {
+                document.title = "TV_Repairs_Sensory_Tuning_Guide";
+                printClass = 'printing-sensory';
+                
+                // Populate sensory observations if filled
+                const inputs = document.querySelectorAll('.sensory-input');
+                const seeVal = inputs[0] ? inputs[0].value.trim() : '';
+                const touchVal = inputs[1] ? inputs[1].value.trim() : '';
+                const hearVal = inputs[2] ? inputs[2].value.trim() : '';
+                const smellVal = inputs[3] ? inputs[3].value.trim() : '';
+                const tasteVal = inputs[4] ? inputs[4].value.trim() : '';
+                
+                const hasObservations = seeVal || touchVal || hearVal || smellVal || tasteVal;
+                const obsContainer = document.getElementById('print-sensory-observations');
+                if (obsContainer) {
+                    if (hasObservations) {
+                        document.getElementById('print-sensory-see').textContent = seeVal || 'Not filled';
+                        document.getElementById('print-sensory-touch').textContent = touchVal || 'Not filled';
+                        document.getElementById('print-sensory-hear').textContent = hearVal || 'Not filled';
+                        document.getElementById('print-sensory-smell').textContent = smellVal || 'Not filled';
+                        document.getElementById('print-sensory-taste').textContent = tasteVal || 'Not filled';
+                        obsContainer.style.display = 'block';
+                    } else {
+                        obsContainer.style.display = 'none';
+                    }
+                }
+            } else if (handoutId === 'handout-gaze') {
+                document.title = "TV_Repairs_Panoramic_Orientation_Guide";
+                printClass = 'printing-gaze';
+            } else if (handoutId === 'handout-nvc') {
+                document.title = "TV_Repairs_Compassionate_Self_Talk_Guide";
+                printClass = 'printing-nvc';
+                
+                // Populate NVC reframe text
+                const customReframeText = document.getElementById('print-custom-reframe-text');
+                const nvcOutput = document.getElementById('nvc-output-statement');
+                if (customReframeText && nvcOutput) {
+                    customReframeText.textContent = nvcOutput.textContent;
+                }
+            }
+
+            if (printClass) {
+                document.body.classList.add(printClass);
+            }
 
             // Trigger window print
             window.print();
             
-            // Restore page title
+            // Restore page title and class
+            if (printClass) {
+                document.body.classList.remove(printClass);
+            }
             document.title = originalTitle;
         }
     </script>
