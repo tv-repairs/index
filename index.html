@@ -322,40 +322,52 @@
     <script>
         document.getElementById('year').textContent = new Date().getFullYear();
 
-        // Fetch latest Substack posts directly from Substack's JSON archive 
-        // We use a CORS proxy to prevent browser security from blocking the request
-        fetch('https://api.allorigins.win/raw?url=' + encodeURIComponent('https://tvrepairs.substack.com/api/v1/archive?sort=new&limit=2'))
+        // Fetch latest Substack posts directly from Substack's RSS feed via rss2json
+        fetch('https://api.rss2json.com/v1/api.json?rss_url=' + encodeURIComponent('https://tvrepairs.substack.com/feed'))
             .then(response => response.json())
             .then(data => {
                 const feedContainer = document.getElementById('substack-feed');
                 feedContainer.innerHTML = ''; // Clear loading text
 
-                if (data && data.length > 0) {
-                    data.forEach(post => {
+                if (data && data.items && data.items.length > 0) {
+                    const posts = data.items.slice(0, 2); // Get top 2
+                    posts.forEach(post => {
                         // Create card element that links to the post
                         const card = document.createElement('a');
-                        card.href = post.canonical_url;
+                        card.href = post.link;
                         card.target = "_blank";
                         card.className = "update-card";
                         card.style.display = "block"; 
                         card.style.textDecoration = "none";
                         card.style.color = "inherit";
 
-                        // Substack JSON API sometimes provides cover images
+                        // Get image from thumbnail or enclosure
                         let imgUrl = "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=600&auto=format&fit=crop"; 
-                        if (post.cover_image) {
-                            imgUrl = post.cover_image;
+                        if (post.thumbnail) {
+                            imgUrl = post.thumbnail;
+                        } else if (post.enclosure && post.enclosure.link && post.enclosure.type && post.enclosure.type.startsWith('image')) {
+                            imgUrl = post.enclosure.link;
                         }
 
-                        // Parse the date
-                        const pubDate = new Date(post.post_date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+                        // Parse the date. Replace dashes with slashes for Safari compatibility
+                        let pubDateStr = post.pubDate;
+                        if (pubDateStr) {
+                             pubDateStr = pubDateStr.replace(/-/g, '/');
+                        }
+                        const pubDate = new Date(pubDateStr).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+
+                        let subtitle = post.description || '';
+                        subtitle = subtitle.replace(/<[^>]+>/g, '').trim(); // strip html
+                        if (subtitle.length > 120) {
+                            subtitle = subtitle.substring(0, 120) + '...';
+                        }
 
                         card.innerHTML = `
                             <img src="${imgUrl}" alt="Thumbnail for ${post.title}" class="update-img" loading="lazy">
                             <div class="update-info">
                                 <p style="font-size: 0.85rem; color: #777; margin-bottom: 0.5rem; text-transform: uppercase; font-weight: 600;">${pubDate}</p>
                                 <h3>${post.title}</h3>
-                                ${post.subtitle ? `<p style="font-size: 0.9rem; color: #555; margin-top: 0.5rem;">${post.subtitle}</p>` : ''}
+                                ${subtitle ? `<p style="font-size: 0.9rem; color: #555; margin-top: 0.5rem;">${subtitle}</p>` : ''}
                             </div>
                         `;
                         feedContainer.appendChild(card);
@@ -365,6 +377,7 @@
                 }
             })
             .catch(error => {
+                console.error("Substack fetch error:", error);
                 document.getElementById('substack-feed').innerHTML = '<p style="text-align: center; width: 100%;">Check out my <a href="https://tvrepairs.substack.com" target="_blank">Substack</a> for the latest updates!</p>';
             });
         // Close menu if clicking outside
